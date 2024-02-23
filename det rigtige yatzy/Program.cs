@@ -28,7 +28,8 @@
 
 
 
-            // scoreboard 1. udkast prøv at kør det for sig selv, og se om det er den retning det skal være 
+            // scoreboard 1. udkast prøv at kør det for sig selv, og se om det er den retning det skal være
+            Console.WriteLine("skriv navn:");
             string playername1 = Console.ReadLine();
             string playername2 = Console.ReadLine();
             string playername3 = Console.ReadLine();
