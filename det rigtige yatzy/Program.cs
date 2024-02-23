@@ -49,3 +49,15 @@
         }
     }
 }
+
+//antal spillere med navn
+
+//scoreboard ses hele tiden
+
+//terningen
+
+
+//selve spillet kigge på regler, holde terninger, opdater scoreboard
+
+
+//15 ture afslut, implementer bonuser
