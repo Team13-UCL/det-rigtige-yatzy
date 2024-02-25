@@ -113,26 +113,6 @@ Console.WriteLine("skriv navn:");
         }
     }
 
-    internal class Player
-    {
-        private string? playerName;
-
-        public Player(string? playerName)
-        {
-            this.playerName = playerName;
-        }
-    }
-
-    internal class YahtzeeGame
-    {
-        private List<Player> players;
-
-        public YahtzeeGame(List<Player> players)
-        {
-            this.players = players;
-        }
-    }
-}
 
 //antal spillere med navn
 
