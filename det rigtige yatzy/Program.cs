@@ -4,32 +4,65 @@
     {
         static void Main(string[] args)
         {
-            // Start besked
-            Console.WriteLine("TEAM 13 Yahtzee!");
+            // Velkomstbesked
+            Console.WriteLine("Velkommen til TEAM 13 Yahtzy");
+            Console.WriteLine("");
 
-            // Brugerinput (Antal a spillere)
-            Console.WriteLine("Hvor mange skal spille?");
-            int numPlayers = int.Parse(Console.ReadLine());
+            // Anmodning om antal spillere
+            Console.WriteLine("Indtast antal spillere (2-4)");
 
-            // Liste med spillernavne
-            List<Player> players = new List<Player>();
+            // Læs antallet af spillere fra brugeren
+            String antal = Console.ReadLine();
+            int valgtetal = int.Parse(antal);
 
-            // Loop for at få spillernes navne
-            for (int i = 0; i < numPlayers; i++)
+            // Switch-sætning baseret på antal spillere
+            switch (valgtetal)
             {
-                // Indtast spillernavne
-                Console.WriteLine($"Indtast spillernavn {i + 1}:");
-                string playerName = Console.ReadLine();
+                case 1:
+                    // Besked om for få spillere, hvis kun én spiller er valgt
+                    Console.WriteLine("Ikke nok spillere");
+                    break;
+                case 2:
+                    // Anmodning om navne på to spillere, hvis to spillere er valgt
+                    Console.WriteLine("Indtast navn på spiller 1:");
+                    string spil1 = Console.ReadLine();
+                    Console.WriteLine("Indtast navn på spiller 2:");
+                    string spil2 = Console.ReadLine();
+                    break;
+                case 3:
+                    // Anmodning om navne på tre spillere, hvis tre spillere er valgt
+                    Console.WriteLine("Indtast navn på spiller 1:");
+                    string spil31 = Console.ReadLine();
+                    Console.WriteLine("Indtast navn på spiller 2:");
+                    string spil32 = Console.ReadLine();
+                    Console.WriteLine("Indtast navn på spiller 3:");
+                    string spil33 = Console.ReadLine();
+                    break;
+                case 4:
+                    // Anmodning om navne på fire spillere, hvis fire spillere er valgt
+                    Console.WriteLine("Indtast navn på spiller 1:");
+                    string spil41 = Console.ReadLine();
+                    Console.WriteLine("Indtast navn på spiller 2:");
+                    string spil42 = Console.ReadLine();
+                    Console.WriteLine("Indtast navn på spiller 3:");
+                    string spil43 = Console.ReadLine();
+                    Console.WriteLine("Indtast navn på spiller 4:");
+                    string spil44 = Console.ReadLine();
+                    break;
 
-                // Gør det nye spillernavn til et opjekt
-                players.Add(new Player(playerName));
             }
 
+            // Vent på brugerens input, før du afslutter programmet
+            Console.ReadLine();
+        }
+    
 
 
 
-            // scoreboard 1. udkast prøv at kør det for sig selv, og se om det er den retning det skal være
-            Console.WriteLine("skriv navn:");
+
+
+// scoreboard 1. udkast prøv at kør det for sig selv, og se om det er den retning det skal være
+Console.WriteLine("skriv navn:");
             string playername1 = Console.ReadLine();
             string playername2 = Console.ReadLine();
             string playername3 = Console.ReadLine();
