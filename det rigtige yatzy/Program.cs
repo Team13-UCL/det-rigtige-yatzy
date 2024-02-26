@@ -125,7 +125,23 @@
                         LåsTerning(terningNummer);
                     }
                 }
+                
                 // Regler
+                int ettere = 0;
+                int toere = 0;
+                int treer = 0;
+                int firer = 0;
+                int femmere = 0;
+                int seksere = 0;
+                int etpar = 0;
+                int topar = 0;
+                int treens = 0;
+                int fireens = 0;
+                int hus = 0;
+                int denlille = 0;
+                int denstore = 0;
+                int chance = 0;
+                int yatzy = 0;
                 int sum1 = SumAfTerning(1, Terning1, Terning2, Terning3, Terning4, Terning5);
                 int sum2 = SumAfTerning(2, Terning1, Terning2, Terning3, Terning4, Terning5);
                 int sum3 = SumAfTerning(3, Terning1, Terning2, Terning3, Terning4, Terning5);
@@ -133,44 +149,44 @@
                 int sum5 = SumAfTerning(5, Terning1, Terning2, Terning3, Terning4, Terning5);
                 int sum6 = SumAfTerning(6, Terning1, Terning2, Terning3, Terning4, Terning5);
 
-                //ettere
-                if (sum1 == 1 && sum2 == 1 && sum3 == 1 && sum4 == 1 && sum5 == 1)
+                //ettere DONE
+                if ((sum1 == 1) || (sum1 == 2) || (sum1 == 3) || (sum1 == 4) || (sum1 == 5) || (sum1 == 6))
                 {
-                    int ettere = 1;
+                    ettere = sum1 * 1;
                 }
 
-                //toere
-                if (sum1 == 2 && sum2 == 2 && sum3 == 2 && sum4 == 2 && sum5 == 2)
+                //toere DONE
+                if ((sum2 == 1) || (sum2 == 2) || (sum2 == 3) || (sum2 == 4) || (sum2 == 5) || (sum2 == 6))
                 {
-                    int toere = 2;
+                    toere = sum2 * 2;
                 }
 
-                //treer
-                if (sum1 == 3 && sum2 == 3 && sum3 == 3 && sum4 == 3 && sum5 == 3)
+                //treer DONE
+                if ((sum3 == 1) || (sum3 == 2) || (sum3 == 3) || (sum3 == 4) || (sum3 == 5) || (sum3 == 6))
                 {
-                    int treer = 3;
+                    treer = sum3 * 3;
                 }
 
-                //firer
-                if (sum1 == 4 && sum2 == 4 && sum3 == 4 && sum4 == 4 && sum5 == 4)
+                //firer DONE
+                if ((sum4 == 1) || (sum4 == 2) || (sum4 == 3) || (sum4 == 4) || (sum4 == 5) || (sum4 == 6))
                 {
-                    int firer = 4;
+                    firer = sum4 * 4;
                 }
 
-                //femmere
-                if (sum1 == 5 && sum2 == 5 && sum3 == 5 && sum4 == 5 && sum5 == 5)
+                //femmere DONE
+                if ((sum5 == 1) || (sum5 == 2) || (sum5 == 3) || (sum5 == 4) || (sum5 == 5) || (sum5 == 6))
                 {
-                    int femmere = 5;
+                    femmere = sum5 * 5;
                 }
 
-                //seksere
-                if (sum1 == 6 && sum2 == 6 && sum3 == 6 && sum4 == 6 && sum5 == 6)
+                //seksere DONE
+                if ((sum6 == 1) || (sum6 == 2) || (sum6 == 3) || (sum6 == 4) || (sum6 == 5) || (sum6 == 6))
                 {
-                    int seksere = 6;
+                    seksere = sum6 * 6;
                 }
 
                 //etpar
-                int etpar = 0;
+                
                 for (int i = 6; i > 0; i--)
                 {
                     if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
@@ -181,7 +197,7 @@
                 }
 
                 //topar
-                int topar = 0;
+                
                 int antalPar = 0;
                 for (int i = 6; i > 0; i--)
                 {
@@ -195,7 +211,7 @@
                 }
 
                 //treens
-                int treens = 0;
+                
                 for (int i = 6; i > 0; i--)
                 {
                     if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
@@ -206,7 +222,7 @@
                 }
 
                 //fireens
-                int fireens = 0;
+                
                 for (int i = 6; i > 0; i--)
                 {
                     if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 4)
@@ -216,38 +232,50 @@
                     }
                 }
 
-                //denlille
-                int[] småStraight = { 1, 1, 1, 1, 1 };
-                int[] storeStraight = { 1, 1, 1, 1, 1 };
-                for (int i = 1; i <= 5; i++)
+                //denlille DONE
+                if ((sum1 == 1) && (sum2 == 1) && (sum3 == 1) && (sum4 == 1) && (sum5 == 1))
                 {
-                    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) == 0)
-                    {
-                        småStraight[i - 1] = 0;
-                    }
-                    if (SumAfTerning(i + 1, Terning1, Terning2, Terning3, Terning4, Terning5) == 0)
-                    {
-                        storeStraight[i] = 0;
-                    }
+                    denlille = 15;
                 }
-                int denlille = småStraight.Sum();
 
-                //denstore
-                int denstore = storeStraight.Sum();
-
-                //chancen
-                int chance = Terning1 + Terning2 + Terning3 + Terning4 + Terning5;
-
-                //Yatzy
-                int yatzy = 0;
-                for (int i = 6; i > 0; i--)
+                //denstore DONE
+                if ((sum2 == 1) && (sum3 == 1) && (sum4 == 1) && (sum5 == 1) && (sum6 == 1))
                 {
-                    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) == 5)
-                    {
-                        yatzy = 50;
-                        break;
-                    }
+                    denstore = 20;
                 }
+                //chancen DONE
+                if ((sum1 == 1) || (sum2 == 1) || (sum3 == 1) || (sum4 == 1) || (sum5 == 1) || (sum6 == 1))
+                {
+                    chance = (sum1 * 1) + (sum2 * 2) + (sum3 * 3) + (sum4 * 4) + (sum5 * 5) + (sum6 * 6);
+                }
+
+                //Yatzy DONE
+                if ((sum1 == 5) || (sum2 == 5) || (sum3 == 5) || (sum4 == 5) || (sum5 == 5) || (sum6 == 5))
+                {
+                    yatzy = 50;
+                }
+
+                // scoreboard 1. udkast 
+                Console.Clear();
+
+                //Scoreboardet
+                Console.WriteLine($"Y A H T Z E E \t\t\t\t\t\t\t\t Players: \t  1:, 2:, 3:, 4:");
+                Console.WriteLine($"Player 1:{spiller1}    Player 2:{spiller2}    Player 3:{spiller3}    Player 4:{spiller4}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 1----------------{ettere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 2----------------{toere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 3----------------{treer}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 4----------------{firer}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 5----------------{femmere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 6----------------{seksere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t tre af en slags--{treens}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t fire af en slags-{fireens}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t Hus--------------{hus}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t denlille---------{denlille}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t denstore---------{denstore}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t chance-----------{chance}");
+                Console.WriteLine($"\t\t\t\t\t\t\t\t\t yatzy------------{yatzy}");
+                Console.WriteLine($"{spiller1}, tur");
+                Console.WriteLine($"Dit terningslag {Terning1}, {Terning2}, {Terning3}, {Terning4}, {Terning5}\t\t\t antal kast:{Kast}");
             }
 
 
@@ -279,6 +307,7 @@
 
                 Kast++;
             }
+
             static void LåsTerning(int DiceNumber) //TO-DO Lås terningen
             {
                 if (DiceNumber == 1)
@@ -308,43 +337,7 @@
 
             }
 
-            // scoreboard 1. udkast 
-            Console.Clear();
-
-            int ettere = 0;
-            int toere = 0;
-            int treer = 0;
-            int firer = 0;
-            int femmere = 0;
-            int seksere = 0;
-            int treafenslags = 0;
-            int fireafenslags = 0;
-            int hus = 0;
-            int denlille = 0;
-            int denstore = 0;
-            int chance = 0;
-            int yatzy = 0;
-
-
-
-            //Scoreboardet
-            Console.WriteLine($"Y A H T Z E E \t\t\t\t\t\t\t\t Players: \t  1:, 2:, 3:, 4:");
-            Console.WriteLine($"Player 1:{spiller1}    Player 2:{spiller2}    Player 3:{spiller3}    Player 4:{spiller4}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t 1----------------{ettere}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t 2----------------{toere}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t 3----------------{treer}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t 4----------------{firer}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t 5----------------{femmere}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t 6----------------{seksere}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t tre af en slags--{treafenslags}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t fire af en slags-{fireafenslags}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t Hus--------------{hus}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t denlille---------{denlille}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t denstore---------{denstore}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t chance-----------{chance}");
-            Console.WriteLine($"\t\t\t\t\t\t\t\t\t yatzy------------{yatzy}");
-            Console.WriteLine($"{spiller1}, tur");
-            Console.WriteLine($"Dit terningslag {Terning1}, {Terning2}, {Terning3}, {Terning4}, {Terning5}\t\t\t antal kast:{Kast}");
+            
         }
     }
 }
