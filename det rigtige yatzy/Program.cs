@@ -1,4 +1,7 @@
-﻿namespace det_rigtige_yatzy
+﻿using System.Threading.Channels;
+using System;
+
+namespace det_rigtige_yatzy
 {
     internal class Program
     {
@@ -28,8 +31,8 @@
             Console.WriteLine("Velkommen til TEAM 13 Yahtzy");
             Console.WriteLine("");
 
-        //goto
-        repeat:
+            //goto
+            repeat:
 
             // Anmodning om antal spillere
             Console.WriteLine("Indtast antal spillere (2-4)");
@@ -44,7 +47,7 @@
             String spiller3 = "";
             String spiller4 = "";
 
-
+            
             // Switch-sætning baseret på antal spillere
             switch (valgtetal)
             {
@@ -86,6 +89,8 @@
 
 
             }
+
+            for (int runde = 0; runde < 15; runde++)
             {
                 IsTerning1Locked = false;
                 IsTerning2Locked = false;
@@ -125,7 +130,7 @@
                         LåsTerning(terningNummer);
                     }
                 }
-                
+
                 // Regler
                 int ettere = 0;
                 int toere = 0;
@@ -186,7 +191,7 @@
                 }
 
                 //etpar
-                
+
                 for (int i = 6; i > 0; i--)
                 {
                     if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
@@ -197,7 +202,7 @@
                 }
 
                 //topar
-                
+
                 int antalPar = 0;
                 for (int i = 6; i > 0; i--)
                 {
@@ -211,7 +216,7 @@
                 }
 
                 //treens
-                
+
                 for (int i = 6; i > 0; i--)
                 {
                     if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
@@ -222,7 +227,7 @@
                 }
 
                 //fireens
-                
+
                 for (int i = 6; i > 0; i--)
                 {
                     if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 4)
@@ -255,8 +260,6 @@
                     yatzy = 50;
                 }
 
-                // scoreboard 1. udkast 
-                Console.Clear();
 
                 //Scoreboardet
                 Console.WriteLine($"Y A H T Z E E \t\t\t\t\t\t\t\t Players: \t  1:, 2:, 3:, 4:");
@@ -276,9 +279,8 @@
                 Console.WriteLine($"\t\t\t\t\t\t\t\t\t yatzy------------{yatzy}");
                 Console.WriteLine($"{spiller1}, tur");
                 Console.WriteLine($"Dit terningslag {Terning1}, {Terning2}, {Terning3}, {Terning4}, {Terning5}\t\t\t antal kast:{Kast}");
+
             }
-
-
             static void KastTerninger()
             {
                 Random r = new Random();
