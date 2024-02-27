@@ -10,6 +10,8 @@ namespace det_rigtige_yatzy
         static int Kast;
         static int ettere, toere, treer, firer, femmere, seksere, etpar, topar, treens, fireens, hus, denlille, denstore, chance, yatzy;
         static String spiller1, spiller2, spiller3, spiller4;
+        static int currentPlayerTal = 0;
+        static string[] SpillerNavn;
 
         static int SumAfTerning(int eyes, int t1, int t2, int t3, int t4, int t5)
         {
@@ -44,9 +46,9 @@ namespace det_rigtige_yatzy
             String antal = Console.ReadLine();
             int valgtetal = int.Parse(antal);
 
-            
 
-            
+
+
             // Switch-sætning baseret på antal spillere
             switch (valgtetal)
             {
@@ -57,29 +59,32 @@ namespace det_rigtige_yatzy
                 case 2:
                     // Anmodning om navne på to spillere, hvis to spillere er valgt
                     Console.WriteLine("Indtast navn på spiller 1:");
-                    spiller1 = Console.ReadLine();
+                    SpillerNavn = new string[2];
+                    SpillerNavn[0] = Console.ReadLine();
                     Console.WriteLine("Indtast navn på spiller 2:");
-                    spiller2 = Console.ReadLine();
+                    SpillerNavn[1] = Console.ReadLine();
                     break;
                 case 3:
                     // Anmodning om navne på tre spillere, hvis tre spillere er valgt
                     Console.WriteLine("Indtast navn på spiller 1:");
-                    spiller1 = Console.ReadLine();
+                    SpillerNavn = new string[3];
+                    SpillerNavn[0] = Console.ReadLine();
                     Console.WriteLine("Indtast navn på spiller 2:");
-                    spiller2 = Console.ReadLine();
+                    SpillerNavn[1] = Console.ReadLine();
                     Console.WriteLine("Indtast navn på spiller 3:");
-                    spiller3 = Console.ReadLine();
+                    SpillerNavn[2] = Console.ReadLine();
                     break;
                 case 4:
                     // Anmodning om navne på fire spillere, hvis fire spillere er valgt
                     Console.WriteLine("Indtast navn på spiller 1:");
-                    spiller1 = Console.ReadLine();
+                    SpillerNavn = new string[4];
+                    SpillerNavn[0] = Console.ReadLine();
                     Console.WriteLine("Indtast navn på spiller 2:");
-                    spiller2 = Console.ReadLine();
+                    SpillerNavn[1] = Console.ReadLine();
                     Console.WriteLine("Indtast navn på spiller 3:");
-                    spiller3 = Console.ReadLine();
+                    SpillerNavn[2] = Console.ReadLine();
                     Console.WriteLine("Indtast navn på spiller 4:");
-                    spiller4 = Console.ReadLine();
+                    SpillerNavn[3] = Console.ReadLine();
                     break;
 
                 default:
@@ -314,6 +319,12 @@ namespace det_rigtige_yatzy
                 //clear og viser opdateret scoreboard
                 Console.Clear();
                 scoreboard();
+                currentPlayerTal++;
+                if (currentPlayerTal >= SpillerNavn.Length)
+                {
+                    currentPlayerTal = 0;
+                }
+                Console.WriteLine($"{SpillerNavn[currentPlayerTal]}, det er din tur.");
 
             }
             static void KastTerninger()
@@ -394,7 +405,7 @@ namespace det_rigtige_yatzy
                 Console.WriteLine($"\t\t\t\t\t\t\t M-denstore-{denstore}");
                 Console.WriteLine($"\t\t\t\t\t\t\t N-chance---{chance}");
                 Console.WriteLine($"\t\t\t\t\t\t\t O-yatzy----{yatzy}");
-                Console.WriteLine($"{spiller1}, tur    ");
+                Console.WriteLine($"{SpillerNavn[currentPlayerTal]}, Det Er Din tur.");
                 Console.WriteLine($"Dit terningslag {Terning1}, {Terning2}, {Terning3}, {Terning4}, {Terning5}\t\t\t du har brugt {Kast} slag");
                          
             }
