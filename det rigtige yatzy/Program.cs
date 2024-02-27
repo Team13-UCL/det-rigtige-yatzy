@@ -13,22 +13,7 @@ namespace det_rigtige_yatzy
         static int currentPlayerTal = 0;
         static string[] SpillerNavn;
 
-        static int SumAfTerning(int eyes, int t1, int t2, int t3, int t4, int t5)
-        {
-            int r = 0;
-            if (eyes == t1) r++;
-
-            if (eyes == t2) r++;
-
-            if (eyes == t3) r++;
-
-            if (eyes == t4) r++;
-
-            if (eyes == t5) r++;
-
-            return r;
-        }
-
+                
         static void Main(string[] args)
         {
 
@@ -97,236 +82,259 @@ namespace det_rigtige_yatzy
             //viser scoreboard
             scoreboard();
 
-            for (int runde = 0; runde < 16; runde++)
-            { 
-                
-                IsTerning1Locked = false;
-                IsTerning2Locked = false;
-                IsTerning3Locked = false;
-                IsTerning4Locked = false;
-                IsTerning5Locked = false;
-                Kast = 0;
-
-                while (Kast < 3)
+            for (int runde = 0; runde < 16; runde++) //kører i 15 runder
+            {
+                while (currentPlayerTal < SpillerNavn.Length) // så længe at current spillere er mindre end indexlængden på arrayen
                 {
-                    if (Kast == 0)
+                    
+
+                    IsTerning1Locked = false;
+                    IsTerning2Locked = false;
+                    IsTerning3Locked = false;
+                    IsTerning4Locked = false;
+                    IsTerning5Locked = false;
+                    Kast = 0;
+
+                    while (Kast < 3)
                     {
-                        Console.WriteLine("Skriv kast for at slå\n");
-                    }
-                    else
-                    {
-                        // Spørg om du vil låse din terning eller kaste igen
-                        Console.WriteLine("Skriv Kast for at slå med terningerne igen eller skriv lås tallet på den terning du gerne vil låse 1-5\n");
-                    }
-
-                    // Man kan også bruge ''if (Console.ReadKey().Key == ConsoleKey.K)'' Hvis man bare vil bruge en knap istedet for at skrive noget
-                    string userInput = Console.ReadLine();
-                    if (userInput == "Kast" || userInput == "kast")
-                    {
-                        KastTerninger();
-
-                        // Skriver terningernes tal ud
-                        Console.WriteLine($"Kast {Kast}: {Terning1} {Terning2} {Terning3} {Terning4} {Terning5}\n"); // Viser at terningen er låst
-
-                        Console.WriteLine($"Du har brugt {Kast} slag\n");
-                    }
-                    else if (userInput.Equals("Lås", StringComparison.OrdinalIgnoreCase))
-                    {
-                        // Spørg om du vil låse din terning eller kaste igen
-                        Console.WriteLine("Skriv tallet på den terning du gerne vil låse [1-5]:\n");
-                        int terningNummer = int.Parse(Console.ReadLine());
-                        LåsTerning(terningNummer);
-                    }
-                }
-
-                        
-                
-                int sum1 = SumAfTerning(1, Terning1, Terning2, Terning3, Terning4, Terning5);
-                int sum2 = SumAfTerning(2, Terning1, Terning2, Terning3, Terning4, Terning5);
-                int sum3 = SumAfTerning(3, Terning1, Terning2, Terning3, Terning4, Terning5);
-                int sum4 = SumAfTerning(4, Terning1, Terning2, Terning3, Terning4, Terning5);
-                int sum5 = SumAfTerning(5, Terning1, Terning2, Terning3, Terning4, Terning5);
-                int sum6 = SumAfTerning(6, Terning1, Terning2, Terning3, Terning4, Terning5);
-
-                
-
-                //clear console
-                Console.Clear();
-
-                //Scoreboardet som er i en method
-                scoreboard();
-
-                Console.WriteLine("skriv bogstavet på pladsen du vil ligge dem ind på");
-                String bogstav = Console.ReadLine();
-
-
-                
-                //ettere DONE
-                if (bogstav == "A")
-                {
-                    ettere = sum1 * 1;
-                }
-
-                //toere DONE
-                if (bogstav == "B")
-                {
-                    toere = sum2 * 2;
-                }
-
-                //treer DONE
-                if (bogstav == "C")
-                {
-                    treer = sum3 * 3;
-                }
-
-                //firer DONE
-                if (bogstav == "D")
-                {
-                    firer = sum4 * 4;
-                }
-
-                //femmere DONE
-                if (bogstav == "E")
-                {
-                    femmere = sum5 * 5;
-                }
-
-                //seksere DONE
-                if (bogstav == "F")
-                {
-                    seksere = sum6 * 6;
-                }
-
-                //etpar DONE
-                if (bogstav == "G")
-                {
-                    for (int i = 6; i > 0; i--)
-                    {
-                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
+                        if (Kast == 0)
                         {
-                            etpar = 2 * i;
-                            break;
+                            Console.WriteLine("Skriv kast for at slå\n");
                         }
-                    }
-                }
-
-                
-
-                //topar DONE
-                if (bogstav == "H")
-                {
-                    int antalPar = 0;
-                    for (int i = 6; i > 0; i--)
-                    {
-                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
+                        else
                         {
-                            topar += 2 * i;
-                            antalPar++;
+                            // Spørg om du vil låse din terning eller kaste igen
+                            Console.WriteLine("Skriv Kast for at slå med terningerne igen eller skriv lås tallet på den terning du gerne vil låse 1-5\n");
                         }
-                        if (antalPar == 2)
-                            break;
-                    }
-                }
-                
 
-                //treens DONE
-                if (bogstav == "I")
-                {
-                    for (int i = 6; i > 0; i--)
-                    {
-                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
+                        // Man kan også bruge ''if (Console.ReadKey().Key == ConsoleKey.K)'' Hvis man bare vil bruge en knap istedet for at skrive noget
+                        string userInput = Console.ReadLine();
+                        if (userInput == "Kast" || userInput == "kast")
                         {
-                            treens = 3 * i;
-                            break;
+                            KastTerninger();
+
+                            // Skriver terningernes tal ud
+                            Console.WriteLine($"Kast {Kast}: {Terning1} {Terning2} {Terning3} {Terning4} {Terning5}\n"); // Viser at terningen er låst
+
+                            Console.WriteLine($"Du har brugt {Kast} slag\n");
                         }
-                    }
-                }
-
-
-                //fireens DONE
-                if (bogstav == "J")
-                {
-                    for (int i = 6; i > 0; i--)
-                    {
-                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 4)
+                        else if (userInput.Equals("Lås", StringComparison.OrdinalIgnoreCase))
                         {
-                            fireens = 4 * i;
-                            break;
-                        }
-                    }
-                }
-
-
-                //hus DONE
-                if (bogstav == "K")
-                {
-                    int antalPars = 0;
-                    bool par = false;
-                    bool treafdesamme = false;
-                    for (int i = 6; i > 0; i--)
-                    {
-                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
-                        {
-                            topar += 2 * i;
-                            antalPars++;
-                        }
-                        if (antalPars == 2)
-                            par = true;
-
-                    }
-                    for (int i = 6; i > 0; i--)
-                    {
-                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
-                        {
-                            treafdesamme = true;
-                            break;
+                            // Spørg om du vil låse din terning eller kaste igen
+                            Console.WriteLine("Skriv tallet på den terning du gerne vil låse [1-5]:\n");
+                            int terningNummer = int.Parse(Console.ReadLine());
+                            LåsTerning(terningNummer);
                         }
                     }
 
-                    if (treafdesamme && par)
+
+
+                    int sum1 = SumAfTerning(1, Terning1, Terning2, Terning3, Terning4, Terning5);
+                    int sum2 = SumAfTerning(2, Terning1, Terning2, Terning3, Terning4, Terning5);
+                    int sum3 = SumAfTerning(3, Terning1, Terning2, Terning3, Terning4, Terning5);
+                    int sum4 = SumAfTerning(4, Terning1, Terning2, Terning3, Terning4, Terning5);
+                    int sum5 = SumAfTerning(5, Terning1, Terning2, Terning3, Terning4, Terning5);
+                    int sum6 = SumAfTerning(6, Terning1, Terning2, Terning3, Terning4, Terning5);
+
+
+
+                    //clear console
+                    Console.Clear();
+
+                    //Scoreboardet som er i en method
+                    scoreboard();
+
+                    Console.WriteLine("skriv bogstavet på pladsen du vil ligge dem ind på");
+                    String bogstav = Console.ReadLine();
+
+
+
+                    //ettere DONE
+                    if (bogstav == "A")
                     {
-                        hus = Terning1 + Terning2 + Terning3 + Terning4 + Terning5;
+                        ettere = sum1 * 1;
                     }
-                    else
+
+                    //toere DONE
+                    if (bogstav == "B")
                     {
-                        hus = 0; //skriv 0 hvis der ikke er hus
+                        toere = sum2 * 2;
                     }
-                }
 
-                //denlille DONE men man kan snyde
-                if (bogstav == "L")
-                {
-                    denlille = 15;
-                }
+                    //treer DONE
+                    if (bogstav == "C")
+                    {
+                        treer = sum3 * 3;
+                    }
 
-                //denstore DONE men man kan snyde
-                if (bogstav == "M")
-                {
-                    denstore = 20;
-                }
-                //chancen DONE
-                if (bogstav == "N")
-                {
-                    chance = (sum1 * 1) + (sum2 * 2) + (sum3 * 3) + (sum4 * 4) + (sum5 * 5) + (sum6 * 6);
-                }
+                    //firer DONE
+                    if (bogstav == "D")
+                    {
+                        firer = sum4 * 4;
+                    }
 
-                //Yatzy DONE men man kan snyde
-                if (bogstav == "O")
-                {
-                    yatzy = 50;
-                }
+                    //femmere DONE
+                    if (bogstav == "E")
+                    {
+                        femmere = sum5 * 5;
+                    }
 
-                //clear og viser opdateret scoreboard
-                Console.Clear();
-                scoreboard();
-                currentPlayerTal++;
-                if (currentPlayerTal >= SpillerNavn.Length)
-                {
-                    currentPlayerTal = 0;
-                }
-                Console.WriteLine($"{SpillerNavn[currentPlayerTal]}, det er din tur.");
+                    //seksere DONE
+                    if (bogstav == "F")
+                    {
+                        seksere = sum6 * 6;
+                    }
 
+                    //etpar DONE
+                    if (bogstav == "G")
+                    {
+                        for (int i = 6; i > 0; i--)
+                        {
+                            if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
+                            {
+                                etpar = 2 * i;
+                                break;
+                            }
+                        }
+                    }
+
+
+
+                    //topar DONE
+                    if (bogstav == "H")
+                    {
+                        int antalPar = 0;
+                        for (int i = 6; i > 0; i--)
+                        {
+                            if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
+                            {
+                                topar += 2 * i;
+                                antalPar++;
+                            }
+                            if (antalPar == 2)
+                                break;
+                        }
+                    }
+
+
+                    //treens DONE
+                    if (bogstav == "I")
+                    {
+                        for (int i = 6; i > 0; i--)
+                        {
+                            if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
+                            {
+                                treens = 3 * i;
+                                break;
+                            }
+                        }
+                    }
+
+
+                    //fireens DONE
+                    if (bogstav == "J")
+                    {
+                        for (int i = 6; i > 0; i--)
+                        {
+                            if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 4)
+                            {
+                                fireens = 4 * i;
+                                break;
+                            }
+                        }
+                    }
+
+
+                    //hus DONE
+                    if (bogstav == "K")
+                    {
+                        int antalPars = 0;
+                        bool par = false;
+                        bool treafdesamme = false;
+                        for (int i = 6; i > 0; i--)
+                        {
+                            if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
+                            {
+                                topar += 2 * i;
+                                antalPars++;
+                            }
+                            if (antalPars == 2)
+                                par = true;
+
+                        }
+                        for (int i = 6; i > 0; i--)
+                        {
+                            if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
+                            {
+                                treafdesamme = true;
+                                break;
+                            }
+                        }
+
+                        if (treafdesamme && par)
+                        {
+                            hus = Terning1 + Terning2 + Terning3 + Terning4 + Terning5;
+                        }
+                        else
+                        {
+                            hus = 0; //skriv 0 hvis der ikke er hus
+                        }
+                    }
+
+                    //denlille DONE men man kan snyde
+                    if (bogstav == "L")
+                    {
+                        denlille = 15;
+                    }
+
+                    //denstore DONE men man kan snyde
+                    if (bogstav == "M")
+                    {
+                        denstore = 20;
+                    }
+                    //chancen DONE
+                    if (bogstav == "N")
+                    {
+                        chance = (sum1 * 1) + (sum2 * 2) + (sum3 * 3) + (sum4 * 4) + (sum5 * 5) + (sum6 * 6);
+                    }
+
+                    //Yatzy DONE men man kan snyde
+                    if (bogstav == "O")
+                    {
+                        yatzy = 50;
+                    }
+
+                    //clear og viser opdateret scoreboard
+                    Console.Clear();
+                    scoreboard();
+
+
+                    currentPlayerTal++;
+                    if (currentPlayerTal >= SpillerNavn.Length)
+                    {
+                        currentPlayerTal = 0;
+                        break;
+                    }
+                    Console.WriteLine($"{SpillerNavn[currentPlayerTal]}, det er din tur.");
+                }
             }
+
+            static int SumAfTerning(int eyes, int t1, int t2, int t3, int t4, int t5)
+            {
+                int r = 0;
+                if (eyes == t1) r++;
+
+                if (eyes == t2) r++;
+
+                if (eyes == t3) r++;
+
+                if (eyes == t4) r++;
+
+                if (eyes == t5) r++;
+
+                return r;
+            }
+
             static void KastTerninger()
             {
                 Random r = new Random();
@@ -419,7 +427,8 @@ namespace det_rigtige_yatzy
 //scoreboard ses hele tiden = ✓
 //terningen = ✓
 //holde terninger = ✓
-//selve spillets gang
+//selve spillets gang = ✓
 //kigge på reglerne og opdater scoreboard
 //15 runder, med alle spillere 
 //afslut, implementer bonuser
+//skrive noter til alting
