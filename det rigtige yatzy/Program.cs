@@ -12,8 +12,8 @@ namespace det_rigtige_yatzy
         static String spiller1, spiller2, spiller3, spiller4;
         static int currentPlayerTal = 0;
         static string[] SpillerNavn;
+        static int runde = 0;
 
-                
         static void Main(string[] args)
         {
 
@@ -78,12 +78,17 @@ namespace det_rigtige_yatzy
 
 
             }
-
+            
             //viser scoreboard
             scoreboard();
 
-            for (int runde = 0; runde < 16; runde++) //kører i 15 runder
+            
+            for (runde = 0; runde < 16; runde++) //kører i 15 runder
             {
+                //clear og viser opdateret scoreboard
+                Console.Clear();
+                scoreboard();
+
                 while (currentPlayerTal < SpillerNavn.Length) // så længe at current spillere er mindre end indexlængden på arrayen
                 {
                     
@@ -397,7 +402,7 @@ namespace det_rigtige_yatzy
             {
                 //Scoreboardet
                 Console.WriteLine($"Y A H T Z Y    \t\t\t\t   Players: \t\t    1:, 2:, 3:, 4:");
-                Console.WriteLine($"Player 1:{spiller1} Player 2:{spiller2} Player 3:{spiller3} Player 4:{spiller4}");
+                Console.WriteLine($"Player 1:{spiller1} Player 2:{spiller2} Player 3:{spiller3} Player 4:{spiller4} runde: {runde}");
                 Console.WriteLine($"\t\t\t\t\t\t\t A-1--------{ettere}");
                 Console.WriteLine($"\t\t\t\t\t\t\t B-2--------{toere}");
                 Console.WriteLine($"\t\t\t\t\t\t\t C-3--------{treer}");
@@ -428,7 +433,7 @@ namespace det_rigtige_yatzy
 //terningen = ✓
 //holde terninger = ✓
 //selve spillets gang = ✓
-//kigge på reglerne og opdater scoreboard
+//kigge på reglerne og opdater scoreboard= ✓
 //15 runder, med alle spillere 
 //afslut, implementer bonuser
 //skrive noter til alting
