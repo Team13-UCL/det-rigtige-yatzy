@@ -8,6 +8,9 @@ namespace det_rigtige_yatzy
         static int Terning1, Terning2, Terning3, Terning4, Terning5;
         static bool IsTerning1Locked, IsTerning2Locked, IsTerning3Locked, IsTerning4Locked, IsTerning5Locked;
         static int Kast;
+        static int ettere, toere, treer, firer, femmere, seksere, etpar, topar, treens, fireens, hus, denlille, denstore, chance, yatzy;
+        static String spiller1, spiller2, spiller3, spiller4;
+
         static int SumAfTerning(int eyes, int t1, int t2, int t3, int t4, int t5)
         {
             int r = 0;
@@ -41,11 +44,7 @@ namespace det_rigtige_yatzy
             String antal = Console.ReadLine();
             int valgtetal = int.Parse(antal);
 
-            //spillernavne
-            String spiller1 = "";
-            String spiller2 = "";
-            String spiller3 = "";
-            String spiller4 = "";
+            
 
             
             // Switch-sætning baseret på antal spillere
@@ -131,22 +130,8 @@ namespace det_rigtige_yatzy
                     }
                 }
 
-                // Regler
-                int ettere = 0;
-                int toere = 0;
-                int treer = 0;
-                int firer = 0;
-                int femmere = 0;
-                int seksere = 0;
-                int etpar = 0;
-                int topar = 0;
-                int treens = 0;
-                int fireens = 0;
-                int hus = 0;
-                int denlille = 0;
-                int denstore = 0;
-                int chance = 0;
-                int yatzy = 0;
+                        
+                
                 int sum1 = SumAfTerning(1, Terning1, Terning2, Terning3, Terning4, Terning5);
                 int sum2 = SumAfTerning(2, Terning1, Terning2, Terning3, Terning4, Terning5);
                 int sum3 = SumAfTerning(3, Terning1, Terning2, Terning3, Terning4, Terning5);
@@ -154,8 +139,21 @@ namespace det_rigtige_yatzy
                 int sum5 = SumAfTerning(5, Terning1, Terning2, Terning3, Terning4, Terning5);
                 int sum6 = SumAfTerning(6, Terning1, Terning2, Terning3, Terning4, Terning5);
 
+                
+
+                //clear console
+                Console.Clear();
+
+                //Scoreboardet det her VIRKER IKKE!!! skulle vise scoreboardet
+                scoreboard();
+
+                Console.WriteLine("skriv hvilken plads du vil ligge dem ind på");
+                Console.ReadKey();
+                
+
+
                 //ettere DONE
-                if ((sum1 == 1) || (sum1 == 2) || (sum1 == 3) || (sum1 == 4) || (sum1 == 5) || (sum1 == 6))
+                if ((sum1 == 1) || (sum1 == 2) || (sum1 == 3) || (sum1 == 4) || (sum1 == 5) || (sum1 == 6));
                 {
                     ettere = sum1 * 1;
                 }
@@ -260,26 +258,6 @@ namespace det_rigtige_yatzy
                     yatzy = 50;
                 }
 
-
-                //Scoreboardet
-                Console.WriteLine($"Y A H T Z E E \t\t\t\t\t\t\t\t Players: \t  1:, 2:, 3:, 4:");
-                Console.WriteLine($"Player 1:{spiller1}    Player 2:{spiller2}    Player 3:{spiller3}    Player 4:{spiller4}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 1----------------{ettere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 2----------------{toere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 3----------------{treer}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 4----------------{firer}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 5----------------{femmere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t 6----------------{seksere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t tre af en slags--{treens}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t fire af en slags-{fireens}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t Hus--------------{hus}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t denlille---------{denlille}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t denstore---------{denstore}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t chance-----------{chance}");
-                Console.WriteLine($"\t\t\t\t\t\t\t\t\t yatzy------------{yatzy}");
-                Console.WriteLine($"{spiller1}, tur");
-                Console.WriteLine($"Dit terningslag {Terning1}, {Terning2}, {Terning3}, {Terning4}, {Terning5}\t\t\t antal kast:{Kast}");
-
             }
             static void KastTerninger()
             {
@@ -337,6 +315,29 @@ namespace det_rigtige_yatzy
                     Console.WriteLine("\nUgyldigt terningnummer hvorfor prøver du ikke igen lille idiot? :)");
                 }
 
+            }
+
+            static void scoreboard()
+            {
+                //Scoreboardet
+                Console.WriteLine($"Y A H T Z Y    \t\t\t\t Players: \t\t  1:, 2:, 3:, 4:");
+                Console.WriteLine($"Player 1:{spiller1} Player 2:{spiller2} Player 3:{spiller3} Player 4:{spiller4}");
+                Console.WriteLine($"\t\t\t\t\t\t\t a-1--------{ettere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t b-2--------{toere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t c-3--------{treer}");
+                Console.WriteLine($"\t\t\t\t\t\t\t d-4--------{firer}");
+                Console.WriteLine($"\t\t\t\t\t\t\t e-5--------{femmere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t f-6--------{seksere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t g-treens---{treens}");
+                Console.WriteLine($"\t\t\t\t\t\t\t h-fireens--{fireens}");
+                Console.WriteLine($"\t\t\t\t\t\t\t i-Hus------{hus}");
+                Console.WriteLine($"\t\t\t\t\t\t\t j-denlille-{denlille}");
+                Console.WriteLine($"\t\t\t\t\t\t\t g-denstore-{denstore}");
+                Console.WriteLine($"\t\t\t\t\t\t\t l-chance---{chance}");
+                Console.WriteLine($"\t\t\t\t\t\t\t m-yatzy----{yatzy}");
+                Console.WriteLine($"{spiller1}, tur    ");
+                Console.WriteLine($"Dit terningslag {Terning1}, {Terning2}, {Terning3}, {Terning4}, {Terning5}\t\t\t du har brugt {Kast} slag");
+                         
             }
 
             
