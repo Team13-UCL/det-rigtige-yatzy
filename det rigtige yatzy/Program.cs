@@ -147,43 +147,43 @@ namespace det_rigtige_yatzy
                 //Scoreboardet det her VIRKER IKKE!!! skulle vise scoreboardet
                 scoreboard();
 
-                Console.WriteLine("skriv hvilken plads du vil ligge dem ind på");
+                Console.WriteLine("skriv bogstavet på pladsen du vil ligge dem ind på");
                 Console.ReadKey();
                 
 
 
                 //ettere DONE
-                if ((sum1 == 1) || (sum1 == 2) || (sum1 == 3) || (sum1 == 4) || (sum1 == 5) || (sum1 == 6));
+                if ((sum1 == 1) || (sum1 == 2) || (sum1 == 3) || (sum1 == 4) || (sum1 == 5) || (sum1 == 6) && Console.ReadKey().Key == ConsoleKey.A) ;
                 {
                     ettere = sum1 * 1;
                 }
 
                 //toere DONE
-                if ((sum2 == 1) || (sum2 == 2) || (sum2 == 3) || (sum2 == 4) || (sum2 == 5) || (sum2 == 6))
+                if ((sum2 == 1) || (sum2 == 2) || (sum2 == 3) || (sum2 == 4) || (sum2 == 5) || (sum2 == 6) && Console.ReadKey().Key == ConsoleKey.B)
                 {
                     toere = sum2 * 2;
                 }
 
                 //treer DONE
-                if ((sum3 == 1) || (sum3 == 2) || (sum3 == 3) || (sum3 == 4) || (sum3 == 5) || (sum3 == 6))
+                if ((sum3 == 1) || (sum3 == 2) || (sum3 == 3) || (sum3 == 4) || (sum3 == 5) || (sum3 == 6) && Console.ReadKey().Key == ConsoleKey.C)
                 {
                     treer = sum3 * 3;
                 }
 
                 //firer DONE
-                if ((sum4 == 1) || (sum4 == 2) || (sum4 == 3) || (sum4 == 4) || (sum4 == 5) || (sum4 == 6))
+                if ((sum4 == 1) || (sum4 == 2) || (sum4 == 3) || (sum4 == 4) || (sum4 == 5) || (sum4 == 6) && Console.ReadKey().Key == ConsoleKey.D)
                 {
                     firer = sum4 * 4;
                 }
 
                 //femmere DONE
-                if ((sum5 == 1) || (sum5 == 2) || (sum5 == 3) || (sum5 == 4) || (sum5 == 5) || (sum5 == 6))
+                if ((sum5 == 1) || (sum5 == 2) || (sum5 == 3) || (sum5 == 4) || (sum5 == 5) || (sum5 == 6) && Console.ReadKey().Key == ConsoleKey.E)
                 {
                     femmere = sum5 * 5;
                 }
 
                 //seksere DONE
-                if ((sum6 == 1) || (sum6 == 2) || (sum6 == 3) || (sum6 == 4) || (sum6 == 5) || (sum6 == 6))
+                if ((sum6 == 1) || (sum6 == 2) || (sum6 == 3) || (sum6 == 4) || (sum6 == 5) || (sum6 == 6) && Console.ReadKey().Key == ConsoleKey.F)
                 {
                     seksere = sum6 * 6;
                 }
@@ -236,27 +236,31 @@ namespace det_rigtige_yatzy
                 }
 
                 //denlille DONE
-                if ((sum1 == 1) && (sum2 == 1) && (sum3 == 1) && (sum4 == 1) && (sum5 == 1))
+                if ((sum1 == 1) && (sum2 == 1) && (sum3 == 1) && (sum4 == 1) && (sum5 == 1) && Console.ReadKey().Key == ConsoleKey.K)
                 {
                     denlille = 15;
                 }
 
                 //denstore DONE
-                if ((sum2 == 1) && (sum3 == 1) && (sum4 == 1) && (sum5 == 1) && (sum6 == 1))
+                if ((sum2 == 1) && (sum3 == 1) && (sum4 == 1) && (sum5 == 1) && (sum6 == 1) && Console.ReadKey().Key == ConsoleKey.L)
                 {
                     denstore = 20;
                 }
                 //chancen DONE
-                if ((sum1 == 1) || (sum2 == 1) || (sum3 == 1) || (sum4 == 1) || (sum5 == 1) || (sum6 == 1))
+                if ((sum1 == 1) || (sum2 == 1) || (sum3 == 1) || (sum4 == 1) || (sum5 == 1) || (sum6 == 1) && Console.ReadKey().Key == ConsoleKey.M)
                 {
                     chance = (sum1 * 1) + (sum2 * 2) + (sum3 * 3) + (sum4 * 4) + (sum5 * 5) + (sum6 * 6);
                 }
 
                 //Yatzy DONE
-                if ((sum1 == 5) || (sum2 == 5) || (sum3 == 5) || (sum4 == 5) || (sum5 == 5) || (sum6 == 5))
+                if ((sum1 == 5) || (sum2 == 5) || (sum3 == 5) || (sum4 == 5) || (sum5 == 5) || (sum6 == 5) && Console.ReadKey().Key == ConsoleKey.N)
                 {
                     yatzy = 50;
                 }
+
+                //clear og viser opdateret scoreboard
+                Console.Clear();
+                scoreboard();
 
             }
             static void KastTerninger()
@@ -320,7 +324,7 @@ namespace det_rigtige_yatzy
             static void scoreboard()
             {
                 //Scoreboardet
-                Console.WriteLine($"Y A H T Z Y    \t\t\t\t Players: \t\t  1:, 2:, 3:, 4:");
+                Console.WriteLine($"Y A H T Z Y    \t\t\t\t   Players: \t\t  1:, 2:, 3:, 4:");
                 Console.WriteLine($"Player 1:{spiller1} Player 2:{spiller2} Player 3:{spiller3} Player 4:{spiller4}");
                 Console.WriteLine($"\t\t\t\t\t\t\t a-1--------{ettere}");
                 Console.WriteLine($"\t\t\t\t\t\t\t b-2--------{toere}");
@@ -332,7 +336,7 @@ namespace det_rigtige_yatzy
                 Console.WriteLine($"\t\t\t\t\t\t\t h-fireens--{fireens}");
                 Console.WriteLine($"\t\t\t\t\t\t\t i-Hus------{hus}");
                 Console.WriteLine($"\t\t\t\t\t\t\t j-denlille-{denlille}");
-                Console.WriteLine($"\t\t\t\t\t\t\t g-denstore-{denstore}");
+                Console.WriteLine($"\t\t\t\t\t\t\t k-denstore-{denstore}");
                 Console.WriteLine($"\t\t\t\t\t\t\t l-chance---{chance}");
                 Console.WriteLine($"\t\t\t\t\t\t\t m-yatzy----{yatzy}");
                 Console.WriteLine($"{spiller1}, tur    ");
