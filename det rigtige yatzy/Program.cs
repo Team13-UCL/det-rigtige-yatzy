@@ -89,8 +89,12 @@ namespace det_rigtige_yatzy
 
             }
 
-            for (int runde = 0; runde < 15; runde++)
+            //viser scoreboard
+            scoreboard();
+
+            for (int runde = 0; runde < 16; runde++)
             {
+                
                 IsTerning1Locked = false;
                 IsTerning2Locked = false;
                 IsTerning3Locked = false;
@@ -144,116 +148,116 @@ namespace det_rigtige_yatzy
                 //clear console
                 Console.Clear();
 
-                //Scoreboardet det her VIRKER IKKE!!! skulle vise scoreboardet
+                //Scoreboardet som er i en method
                 scoreboard();
 
                 Console.WriteLine("skriv bogstavet på pladsen du vil ligge dem ind på");
-                Console.ReadKey();
-                
+                String bogstav = Console.ReadLine();
+
 
 
                 //ettere DONE
-                if ((sum1 == 1) || (sum1 == 2) || (sum1 == 3) || (sum1 == 4) || (sum1 == 5) || (sum1 == 6) && Console.ReadKey().Key == ConsoleKey.A) ;
+                if (bogstav == "A")
                 {
                     ettere = sum1 * 1;
                 }
 
                 //toere DONE
-                if ((sum2 == 1) || (sum2 == 2) || (sum2 == 3) || (sum2 == 4) || (sum2 == 5) || (sum2 == 6) && Console.ReadKey().Key == ConsoleKey.B)
+                if (bogstav == "B")
                 {
                     toere = sum2 * 2;
                 }
 
                 //treer DONE
-                if ((sum3 == 1) || (sum3 == 2) || (sum3 == 3) || (sum3 == 4) || (sum3 == 5) || (sum3 == 6) && Console.ReadKey().Key == ConsoleKey.C)
+                if (bogstav == "C")
                 {
                     treer = sum3 * 3;
                 }
 
                 //firer DONE
-                if ((sum4 == 1) || (sum4 == 2) || (sum4 == 3) || (sum4 == 4) || (sum4 == 5) || (sum4 == 6) && Console.ReadKey().Key == ConsoleKey.D)
+                if (bogstav == "D")
                 {
                     firer = sum4 * 4;
                 }
 
                 //femmere DONE
-                if ((sum5 == 1) || (sum5 == 2) || (sum5 == 3) || (sum5 == 4) || (sum5 == 5) || (sum5 == 6) && Console.ReadKey().Key == ConsoleKey.E)
+                if (bogstav == "E")
                 {
                     femmere = sum5 * 5;
                 }
 
                 //seksere DONE
-                if ((sum6 == 1) || (sum6 == 2) || (sum6 == 3) || (sum6 == 4) || (sum6 == 5) || (sum6 == 6) && Console.ReadKey().Key == ConsoleKey.F)
+                if (bogstav == "F")
                 {
                     seksere = sum6 * 6;
                 }
 
                 //etpar
 
-                for (int i = 6; i > 0; i--)
-                {
-                    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
-                    {
-                        etpar = 2 * i;
-                        break;
-                    }
-                }
+                //for (int i = 6; i > 0; i--)
+                //{
+                //    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
+                //    {
+                //        etpar = 2 * i;
+                //        break;
+                //    }
+                //}
 
-                //topar
+                ////topar
 
-                int antalPar = 0;
-                for (int i = 6; i > 0; i--)
-                {
-                    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
-                    {
-                        topar += 2 * i;
-                        antalPar++;
-                    }
-                    if (antalPar == 2)
-                        break;
-                }
+                //int antalPar = 0;
+                //for (int i = 6; i > 0; i--)
+                //{
+                //    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
+                //    {
+                //        topar += 2 * i;
+                //        antalPar++;
+                //    }
+                //    if (antalPar == 2)
+                //        break;
+                //}
 
-                //treens
+                ////treens
 
-                for (int i = 6; i > 0; i--)
-                {
-                    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
-                    {
-                        treens = 3 * i;
-                        break;
-                    }
-                }
+                //for (int i = 6; i > 0; i--)
+                //{
+                //    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
+                //    {
+                //        treens = 3 * i;
+                //        break;
+                //    }
+                //}
 
-                //fireens
+                ////fireens
 
-                for (int i = 6; i > 0; i--)
-                {
-                    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 4)
-                    {
-                        fireens = 4 * i;
-                        break;
-                    }
-                }
+                //for (int i = 6; i > 0; i--)
+                //{
+                //    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 4)
+                //    {
+                //        fireens = 4 * i;
+                //        break;
+                //    }
+                //}
 
                 //denlille DONE
-                if ((sum1 == 1) && (sum2 == 1) && (sum3 == 1) && (sum4 == 1) && (sum5 == 1) && Console.ReadKey().Key == ConsoleKey.K)
+                if (bogstav == "I")
                 {
                     denlille = 15;
                 }
 
                 //denstore DONE
-                if ((sum2 == 1) && (sum3 == 1) && (sum4 == 1) && (sum5 == 1) && (sum6 == 1) && Console.ReadKey().Key == ConsoleKey.L)
+                if (bogstav == "K")
                 {
                     denstore = 20;
                 }
                 //chancen DONE
-                if ((sum1 == 1) || (sum2 == 1) || (sum3 == 1) || (sum4 == 1) || (sum5 == 1) || (sum6 == 1) && Console.ReadKey().Key == ConsoleKey.M)
+                if (bogstav == "L")
                 {
                     chance = (sum1 * 1) + (sum2 * 2) + (sum3 * 3) + (sum4 * 4) + (sum5 * 5) + (sum6 * 6);
                 }
 
                 //Yatzy DONE
-                if ((sum1 == 5) || (sum2 == 5) || (sum3 == 5) || (sum4 == 5) || (sum5 == 5) || (sum6 == 5) && Console.ReadKey().Key == ConsoleKey.N)
+                if (bogstav == "M")
                 {
                     yatzy = 50;
                 }
@@ -324,21 +328,21 @@ namespace det_rigtige_yatzy
             static void scoreboard()
             {
                 //Scoreboardet
-                Console.WriteLine($"Y A H T Z Y    \t\t\t\t   Players: \t\t  1:, 2:, 3:, 4:");
+                Console.WriteLine($"Y A H T Z Y    \t\t\t\t   Players: \t\t    1:, 2:, 3:, 4:");
                 Console.WriteLine($"Player 1:{spiller1} Player 2:{spiller2} Player 3:{spiller3} Player 4:{spiller4}");
-                Console.WriteLine($"\t\t\t\t\t\t\t a-1--------{ettere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t b-2--------{toere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t c-3--------{treer}");
-                Console.WriteLine($"\t\t\t\t\t\t\t d-4--------{firer}");
-                Console.WriteLine($"\t\t\t\t\t\t\t e-5--------{femmere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t f-6--------{seksere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t g-treens---{treens}");
-                Console.WriteLine($"\t\t\t\t\t\t\t h-fireens--{fireens}");
-                Console.WriteLine($"\t\t\t\t\t\t\t i-Hus------{hus}");
-                Console.WriteLine($"\t\t\t\t\t\t\t j-denlille-{denlille}");
-                Console.WriteLine($"\t\t\t\t\t\t\t k-denstore-{denstore}");
-                Console.WriteLine($"\t\t\t\t\t\t\t l-chance---{chance}");
-                Console.WriteLine($"\t\t\t\t\t\t\t m-yatzy----{yatzy}");
+                Console.WriteLine($"\t\t\t\t\t\t\t A-1--------{ettere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t B-2--------{toere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t C-3--------{treer}");
+                Console.WriteLine($"\t\t\t\t\t\t\t D-4--------{firer}");
+                Console.WriteLine($"\t\t\t\t\t\t\t E-5--------{femmere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t F-6--------{seksere}");
+                Console.WriteLine($"\t\t\t\t\t\t\t G-treens---{treens}");
+                Console.WriteLine($"\t\t\t\t\t\t\t H-fireens--{fireens}");
+                Console.WriteLine($"\t\t\t\t\t\t\t I-Hus------{hus}");
+                Console.WriteLine($"\t\t\t\t\t\t\t J-denlille-{denlille}");
+                Console.WriteLine($"\t\t\t\t\t\t\t K-denstore-{denstore}");
+                Console.WriteLine($"\t\t\t\t\t\t\t L-chance---{chance}");
+                Console.WriteLine($"\t\t\t\t\t\t\t M-yatzy----{yatzy}");
                 Console.WriteLine($"{spiller1}, tur    ");
                 Console.WriteLine($"Dit terningslag {Terning1}, {Terning2}, {Terning3}, {Terning4}, {Terning5}\t\t\t du har brugt {Kast} slag");
                          
@@ -355,4 +359,5 @@ namespace det_rigtige_yatzy
 //holde terninger = ✓
 //selve spillets gang
 //kigge på reglerne og opdater scoreboard
-//15 ture afslut, implementer bonuser
+//15 runder, med alle spillere 
+//afslut, implementer bonuser
