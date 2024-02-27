@@ -93,7 +93,7 @@ namespace det_rigtige_yatzy
             scoreboard();
 
             for (int runde = 0; runde < 16; runde++)
-            {
+            { 
                 
                 IsTerning1Locked = false;
                 IsTerning2Locked = false;
@@ -155,7 +155,7 @@ namespace det_rigtige_yatzy
                 String bogstav = Console.ReadLine();
 
 
-
+                
                 //ettere DONE
                 if (bogstav == "A")
                 {
@@ -192,72 +192,121 @@ namespace det_rigtige_yatzy
                     seksere = sum6 * 6;
                 }
 
-                //etpar
+                //etpar DONE
+                if (bogstav == "G")
+                {
+                    for (int i = 6; i > 0; i--)
+                    {
+                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
+                        {
+                            etpar = 2 * i;
+                            break;
+                        }
+                    }
+                }
 
-                //for (int i = 6; i > 0; i--)
-                //{
-                //    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
-                //    {
-                //        etpar = 2 * i;
-                //        break;
-                //    }
-                //}
+                
 
-                ////topar
+                //topar DONE
+                if (bogstav == "H")
+                {
+                    int antalPar = 0;
+                    for (int i = 6; i > 0; i--)
+                    {
+                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
+                        {
+                            topar += 2 * i;
+                            antalPar++;
+                        }
+                        if (antalPar == 2)
+                            break;
+                    }
+                }
+                
 
-                //int antalPar = 0;
-                //for (int i = 6; i > 0; i--)
-                //{
-                //    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
-                //    {
-                //        topar += 2 * i;
-                //        antalPar++;
-                //    }
-                //    if (antalPar == 2)
-                //        break;
-                //}
-
-                ////treens
-
-                //for (int i = 6; i > 0; i--)
-                //{
-                //    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
-                //    {
-                //        treens = 3 * i;
-                //        break;
-                //    }
-                //}
-
-                ////fireens
-
-                //for (int i = 6; i > 0; i--)
-                //{
-                //    if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 4)
-                //    {
-                //        fireens = 4 * i;
-                //        break;
-                //    }
-                //}
-
-                //denlille DONE
+                //treens DONE
                 if (bogstav == "I")
+                {
+                    for (int i = 6; i > 0; i--)
+                    {
+                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
+                        {
+                            treens = 3 * i;
+                            break;
+                        }
+                    }
+                }
+
+
+                //fireens DONE
+                if (bogstav == "J")
+                {
+                    for (int i = 6; i > 0; i--)
+                    {
+                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 4)
+                        {
+                            fireens = 4 * i;
+                            break;
+                        }
+                    }
+                }
+
+
+                //hus DONE
+                if (bogstav == "K")
+                {
+                    int antalPars = 0;
+                    bool par = false;
+                    bool treafdesamme = false;
+                    for (int i = 6; i > 0; i--)
+                    {
+                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
+                        {
+                            topar += 2 * i;
+                            antalPars++;
+                        }
+                        if (antalPars == 2)
+                            par = true;
+
+                    }
+                    for (int i = 6; i > 0; i--)
+                    {
+                        if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
+                        {
+                            treafdesamme = true;
+                            break;
+                        }
+                    }
+
+                    if (treafdesamme && par)
+                    {
+                        hus = Terning1 + Terning2 + Terning3 + Terning4 + Terning5;
+                    }
+                    else
+                    {
+                        hus = 0; //skriv 0 hvis der ikke er hus
+                    }
+                }
+
+                //denlille DONE men man kan snyde
+                if (bogstav == "L")
                 {
                     denlille = 15;
                 }
 
-                //denstore DONE
-                if (bogstav == "K")
+                //denstore DONE men man kan snyde
+                if (bogstav == "M")
                 {
                     denstore = 20;
                 }
                 //chancen DONE
-                if (bogstav == "L")
+                if (bogstav == "N")
                 {
                     chance = (sum1 * 1) + (sum2 * 2) + (sum3 * 3) + (sum4 * 4) + (sum5 * 5) + (sum6 * 6);
                 }
 
-                //Yatzy DONE
-                if (bogstav == "M")
+                //Yatzy DONE men man kan snyde
+                if (bogstav == "O")
                 {
                     yatzy = 50;
                 }
@@ -336,13 +385,15 @@ namespace det_rigtige_yatzy
                 Console.WriteLine($"\t\t\t\t\t\t\t D-4--------{firer}");
                 Console.WriteLine($"\t\t\t\t\t\t\t E-5--------{femmere}");
                 Console.WriteLine($"\t\t\t\t\t\t\t F-6--------{seksere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t G-treens---{treens}");
-                Console.WriteLine($"\t\t\t\t\t\t\t H-fireens--{fireens}");
-                Console.WriteLine($"\t\t\t\t\t\t\t I-Hus------{hus}");
-                Console.WriteLine($"\t\t\t\t\t\t\t J-denlille-{denlille}");
-                Console.WriteLine($"\t\t\t\t\t\t\t K-denstore-{denstore}");
-                Console.WriteLine($"\t\t\t\t\t\t\t L-chance---{chance}");
-                Console.WriteLine($"\t\t\t\t\t\t\t M-yatzy----{yatzy}");
+                Console.WriteLine($"\t\t\t\t\t\t\t G-etpar----{etpar}");
+                Console.WriteLine($"\t\t\t\t\t\t\t H-topar----{topar}");
+                Console.WriteLine($"\t\t\t\t\t\t\t I-treens---{treens}");
+                Console.WriteLine($"\t\t\t\t\t\t\t J-fireens--{fireens}");
+                Console.WriteLine($"\t\t\t\t\t\t\t K-Hus------{hus}");
+                Console.WriteLine($"\t\t\t\t\t\t\t L-denlille-{denlille}");
+                Console.WriteLine($"\t\t\t\t\t\t\t M-denstore-{denstore}");
+                Console.WriteLine($"\t\t\t\t\t\t\t N-chance---{chance}");
+                Console.WriteLine($"\t\t\t\t\t\t\t O-yatzy----{yatzy}");
                 Console.WriteLine($"{spiller1}, tur    ");
                 Console.WriteLine($"Dit terningslag {Terning1}, {Terning2}, {Terning3}, {Terning4}, {Terning5}\t\t\t du har brugt {Kast} slag");
                          
