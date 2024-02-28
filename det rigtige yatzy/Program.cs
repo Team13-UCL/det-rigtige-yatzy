@@ -5,14 +5,11 @@ namespace det_rigtige_yatzy
 {
     internal class Program
     {
-        static int Terning1, Terning2, Terning3, Terning4, Terning5;
+        static int Terning1, Terning2, Terning3, Terning4, Terning5, currentPlayerTal, runde, Kast, ettere, toere, treer, firer, femmere, seksere, etpar, topar, treens, fireens, hus, denlille, denstore, chance, yatzy;
         static bool IsTerning1Locked, IsTerning2Locked, IsTerning3Locked, IsTerning4Locked, IsTerning5Locked;
-        static int Kast;
-        static int ettere, toere, treer, firer, femmere, seksere, etpar, topar, treens, fireens, hus, denlille, denstore, chance, yatzy;
         static String spiller1, spiller2, spiller3, spiller4;
-        static int currentPlayerTal = 0;
         static string[] SpillerNavn;
-        static int runde = 0;
+        
 
         static void Main(string[] args)
         {
@@ -101,7 +98,7 @@ namespace det_rigtige_yatzy
                 while (currentPlayerTal < SpillerNavn.Length) // så længe at current spillere er mindre end indexlængden på arrayen
                 {
                     
-
+                    //unødvendigt fordi de er standard false og 0 åbenbart, men er fint til at forstå hvad der sker
                     IsTerning1Locked = false;
                     IsTerning2Locked = false;
                     IsTerning3Locked = false;
@@ -142,7 +139,7 @@ namespace det_rigtige_yatzy
                     }
 
 
-
+                    //sumafTerning method bruges til at beregne summen af øjnene for hver terning og for hver mulig værdi fra 1 til 6. og gemmes i sum variabler
                     int sum1 = SumAfTerning(1, Terning1, Terning2, Terning3, Terning4, Terning5);
                     int sum2 = SumAfTerning(2, Terning1, Terning2, Terning3, Terning4, Terning5);
                     int sum3 = SumAfTerning(3, Terning1, Terning2, Terning3, Terning4, Terning5);
@@ -162,44 +159,45 @@ namespace det_rigtige_yatzy
                     String bogstav = Console.ReadLine();
 
 
+                    //REGLER:
 
-                    //ettere DONE
+                    //ettere 
                     if (bogstav == "A")
                     {
                         ettere = sum1 * 1;
                     }
 
-                    //toere DONE
+                    //toere 
                     if (bogstav == "B")
                     {
                         toere = sum2 * 2;
                     }
 
-                    //treer DONE
+                    //treer 
                     if (bogstav == "C")
                     {
                         treer = sum3 * 3;
                     }
 
-                    //firer DONE
+                    //firer 
                     if (bogstav == "D")
                     {
                         firer = sum4 * 4;
                     }
 
-                    //femmere DONE
+                    //femmere 
                     if (bogstav == "E")
                     {
                         femmere = sum5 * 5;
                     }
 
-                    //seksere DONE
+                    //seksere 
                     if (bogstav == "F")
                     {
                         seksere = sum6 * 6;
                     }
 
-                    //etpar DONE
+                    //etpar 
                     if (bogstav == "G")
                     {
                         for (int i = 6; i > 0; i--)
@@ -212,9 +210,7 @@ namespace det_rigtige_yatzy
                         }
                     }
 
-
-
-                    //topar DONE
+                    //topar 
                     if (bogstav == "H")
                     {
                         int antalPar = 0;
@@ -231,7 +227,7 @@ namespace det_rigtige_yatzy
                     }
 
 
-                    //treens DONE
+                    //treens 
                     if (bogstav == "I")
                     {
                         for (int i = 6; i > 0; i--)
@@ -245,7 +241,7 @@ namespace det_rigtige_yatzy
                     }
 
 
-                    //fireens DONE
+                    //fireens 
                     if (bogstav == "J")
                     {
                         for (int i = 6; i > 0; i--)
@@ -259,7 +255,7 @@ namespace det_rigtige_yatzy
                     }
 
 
-                    //hus DONE
+                    //hus 
                     if (bogstav == "K")
                     {
                         int antalPars = 0;
@@ -306,7 +302,7 @@ namespace det_rigtige_yatzy
                     {
                         denstore = 20;
                     }
-                    //chancen DONE
+                    //chancen 
                     if (bogstav == "N")
                     {
                         chance = (sum1 * 1) + (sum2 * 2) + (sum3 * 3) + (sum4 * 4) + (sum5 * 5) + (sum6 * 6);
@@ -455,5 +451,6 @@ namespace det_rigtige_yatzy
 //selve spillets gang = ✓
 //kigge på reglerne og opdater scoreboard= ✓
 //15 runder, med alle spillere = ✓
+// KÆMPE PROBLEM, lige pt er det kun player 1 der kan få point...
 //afslut, implementer bonuser
 //skrive noter til alting
