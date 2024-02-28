@@ -9,7 +9,8 @@ namespace det_rigtige_yatzy
         static bool IsTerning1Locked, IsTerning2Locked, IsTerning3Locked, IsTerning4Locked, IsTerning5Locked;
         static String spiller1, spiller2, spiller3, spiller4;
         static string[] SpillerNavn;
-        
+        static int totalPoints = ettere + toere + treer + firer + femmere + seksere + etpar + topar + treens + fireens + hus + denlille + denstore + chance + yatzy;
+
 
         static void Main(string[] args)
         {
@@ -328,7 +329,55 @@ namespace det_rigtige_yatzy
                     Console.WriteLine($"{SpillerNavn[currentPlayerTal]}, det er din tur.");
                 }
             }
+            if (runde == 16)
+            {
+                // Holder styr på den højeste score, start værdien er sat til 0 indtil der bliver fundet højere
+                int maximumPoints = 0;
+                // Holder navn på videren
+                string Vinderen = "";
 
+                // Dette er en løkke som går igennem alle vores spillere og holder styr på dem
+                for (int i = 0; i < SpillerNavn.Length; i++)
+                {
+                    //Tager vores totalpoints fra hver spiller og finder ud af hvem der har mest og så viser navnet
+                    int currentPlayerPoints = totalPoints[SpillerNavn[i]];
+                    if (currentPlayerPoints > maximumPoints)
+                    {
+                        maximumPoints = currentPlayerPoints;
+                        Vinderen = SpillerNavn[i];
+                    }
+                }
+
+                Console.WriteLine($"Tillykke til vinderen, {Vinderen}, med {maximumPoints} points!");
+
+                switch (SpillerNavn.Length)
+                {
+                    case 2:
+                        Console.WriteLine($"Tillykke {SpillerNavn[0]} du har fået {totalPoints[SpillerNavn[0]]} points:");
+                        Console.ReadLine();
+                        Console.WriteLine($"Tillykke {SpillerNavn[1]} du har fået {totalPoints[SpillerNavn[1]]} points:");
+                        Console.ReadLine();
+                        break;
+                    case 3:
+                        Console.WriteLine($"Tillykke {SpillerNavn[0]} du har fået {totalPoints[SpillerNavn[0]]} points:");
+                        Console.ReadLine();
+                        Console.WriteLine($"Tillykke {SpillerNavn[1]} du har fået {totalPoints[SpillerNavn[1]]} points:");
+                        Console.ReadLine();
+                        Console.WriteLine($"Tillykke {SpillerNavn[2]} du har fået {totalPoints[SpillerNavn[2]]} points:");
+                        Console.ReadLine();
+                        break;
+                    case 4:
+                        Console.WriteLine($"Tillykke {SpillerNavn[0]} du har fået {totalPoints[SpillerNavn[0]]} points:");
+                        Console.ReadLine();
+                        Console.WriteLine($"Tillykke {SpillerNavn[1]} du har fået {totalPoints[SpillerNavn[1]]} points:");
+                        Console.ReadLine();
+                        Console.WriteLine($"Tillykke {SpillerNavn[2]} du har fået {totalPoints[SpillerNavn[2]]} points:");
+                        Console.ReadLine();
+                        Console.WriteLine($"Tillykke {SpillerNavn[3]} du har fået {totalPoints[SpillerNavn[3]]} points:");
+                        Console.ReadLine();
+                        break;
+                }
+            }
 
 
 
@@ -418,7 +467,7 @@ namespace det_rigtige_yatzy
             {
                 //Scoreboardet
                 Console.WriteLine($"Y A H T Z Y    \t\t\t\t   Players: \t\t    1:, 2:, 3:, 4:");
-                Console.WriteLine($"Player 1:{spiller1} Player 2:{spiller2} Player 3:{spiller3} Player 4:{spiller4} runde: {runde}");
+                Console.WriteLine($"Player 1:{spiller1} Player 2:{spiller2} Player 3:{spiller3} Player 4:{spiller4} \t\t Runde: {runde}");
                 Console.WriteLine($"\t\t\t\t\t\t\t A-1--------{ettere}");
                 Console.WriteLine($"\t\t\t\t\t\t\t B-2--------{toere}");
                 Console.WriteLine($"\t\t\t\t\t\t\t C-3--------{treer}");
