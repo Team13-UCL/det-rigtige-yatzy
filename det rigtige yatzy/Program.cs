@@ -46,30 +46,39 @@ namespace det_rigtige_yatzy
                     Console.WriteLine("Indtast navn på spiller 1:");
                     SpillerNavn = new string[2];
                     SpillerNavn[0] = Console.ReadLine();
+                    spiller1 = SpillerNavn[0];
                     Console.WriteLine("Indtast navn på spiller 2:");
                     SpillerNavn[1] = Console.ReadLine();
+                    spiller2 = SpillerNavn[1];
                     break;
                 case 3:
                     // Anmodning om navne på tre spillere, hvis tre spillere er valgt
                     Console.WriteLine("Indtast navn på spiller 1:");
                     SpillerNavn = new string[3];
                     SpillerNavn[0] = Console.ReadLine();
+                    spiller1 = SpillerNavn[0];
                     Console.WriteLine("Indtast navn på spiller 2:");
                     SpillerNavn[1] = Console.ReadLine();
+                    spiller2 = SpillerNavn[1];
                     Console.WriteLine("Indtast navn på spiller 3:");
                     SpillerNavn[2] = Console.ReadLine();
+                    spiller3 = SpillerNavn[2];
                     break;
                 case 4:
                     // Anmodning om navne på fire spillere, hvis fire spillere er valgt
                     Console.WriteLine("Indtast navn på spiller 1:");
                     SpillerNavn = new string[4];
                     SpillerNavn[0] = Console.ReadLine();
+                    spiller1 = SpillerNavn[0];
                     Console.WriteLine("Indtast navn på spiller 2:");
                     SpillerNavn[1] = Console.ReadLine();
+                    spiller2 = SpillerNavn[1];
                     Console.WriteLine("Indtast navn på spiller 3:");
                     SpillerNavn[2] = Console.ReadLine();
+                    spiller3 = SpillerNavn[2];
                     Console.WriteLine("Indtast navn på spiller 4:");
                     SpillerNavn[3] = Console.ReadLine();
+                    spiller4 = SpillerNavn[3];
                     break;
 
                 default:
@@ -324,6 +333,17 @@ namespace det_rigtige_yatzy
                 }
             }
 
+
+
+
+
+
+
+
+
+
+
+            //////////////////////////ALLE METHODS////////////////////////
             static int SumAfTerning(int eyes, int t1, int t2, int t3, int t4, int t5)
             {
                 int r = 0;
@@ -434,6 +454,6 @@ namespace det_rigtige_yatzy
 //holde terninger = ✓
 //selve spillets gang = ✓
 //kigge på reglerne og opdater scoreboard= ✓
-//15 runder, med alle spillere 
+//15 runder, med alle spillere = ✓
 //afslut, implementer bonuser
 //skrive noter til alting
