@@ -5,12 +5,12 @@ namespace det_rigtige_yatzy
 {
     internal class Program
     {
-        static int Terning1, Terning2, Terning3, Terning4, Terning5, currentPlayerTal, runde, Kast, ettere, toere, treer, firer, femmere, seksere, etpar, topar, treens, fireens, hus, denlille, denstore, chance, yatzy;
+        static int Terning1, Terning2, Terning3, Terning4, Terning5, currentPlayerTal, runde, Kast;
         static bool IsTerning1Locked, IsTerning2Locked, IsTerning3Locked, IsTerning4Locked, IsTerning5Locked;
         static String spiller1, spiller2, spiller3, spiller4;
         static string[] SpillerNavn;
-        static int totalPoints = ettere + toere + treer + firer + femmere + seksere + etpar + topar + treens + fireens + hus + denlille + denstore + chance + yatzy;
-
+        //static int totalPoints = ettere + toere + treer + firer + femmere + seksere + etpar + topar + treens + fireens + hus + denlille + denstore + chance + yatzy;
+        static int[] ettere, toere, treer, firer, femmere, seksere, etpar, topar, treens, fireens, hus, denlille, denstore, chance, yatzy; // laver en int array for hver regel
 
         static void Main(string[] args)
         {
@@ -85,7 +85,26 @@ namespace det_rigtige_yatzy
 
 
             }
-            
+
+
+            //opretter en int for hver regel, for hver spiller (det vil sige deres indexnummer i spillernavn arrayen)
+            ettere = new int[SpillerNavn.Length];
+            toere = new int[SpillerNavn.Length];
+            treer = new int[SpillerNavn.Length];
+            firer = new int[SpillerNavn.Length];
+            femmere = new int[SpillerNavn.Length];
+            seksere = new int[SpillerNavn.Length];
+            etpar = new int[SpillerNavn.Length];
+            topar = new int[SpillerNavn.Length];
+            treens = new int[SpillerNavn.Length];
+            fireens = new int[SpillerNavn.Length];
+            hus = new int[SpillerNavn.Length];
+            denlille = new int[SpillerNavn.Length];
+            denstore = new int[SpillerNavn.Length];
+            chance = new int[SpillerNavn.Length];
+            yatzy = new int[SpillerNavn.Length];
+
+
             //viser scoreboard
             scoreboard();
 
@@ -165,37 +184,37 @@ namespace det_rigtige_yatzy
                     //ettere 
                     if (bogstav == "A")
                     {
-                        ettere = sum1 * 1;
+                        ettere[currentPlayerTal] = sum1 * 1;
                     }
 
                     //toere 
                     if (bogstav == "B")
                     {
-                        toere = sum2 * 2;
+                        toere[currentPlayerTal] = sum2 * 2;
                     }
 
                     //treer 
                     if (bogstav == "C")
                     {
-                        treer = sum3 * 3;
+                        treer[currentPlayerTal] = sum3 * 3;
                     }
 
                     //firer 
                     if (bogstav == "D")
                     {
-                        firer = sum4 * 4;
+                        firer[currentPlayerTal] = sum4 * 4;
                     }
 
                     //femmere 
                     if (bogstav == "E")
                     {
-                        femmere = sum5 * 5;
+                        femmere[currentPlayerTal] = sum5 * 5;
                     }
 
                     //seksere 
                     if (bogstav == "F")
                     {
-                        seksere = sum6 * 6;
+                        seksere[currentPlayerTal] = sum6 * 6;
                     }
 
                     //etpar 
@@ -205,7 +224,7 @@ namespace det_rigtige_yatzy
                         {
                             if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
                             {
-                                etpar = 2 * i;
+                                etpar[currentPlayerTal] = 2 * i;
                                 break;
                             }
                         }
@@ -219,7 +238,7 @@ namespace det_rigtige_yatzy
                         {
                             if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
                             {
-                                topar += 2 * i;
+                                topar[currentPlayerTal] += 2 * i;
                                 antalPar++;
                             }
                             if (antalPar == 2)
@@ -235,7 +254,7 @@ namespace det_rigtige_yatzy
                         {
                             if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 3)
                             {
-                                treens = 3 * i;
+                                treens[currentPlayerTal] = 3 * i;
                                 break;
                             }
                         }
@@ -249,7 +268,7 @@ namespace det_rigtige_yatzy
                         {
                             if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 4)
                             {
-                                fireens = 4 * i;
+                                fireens[currentPlayerTal] = 4 * i;
                                 break;
                             }
                         }
@@ -266,7 +285,7 @@ namespace det_rigtige_yatzy
                         {
                             if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
                             {
-                                topar += 2 * i;
+                                topar[currentPlayerTal] += 2 * i;
                                 antalPars++;
                             }
                             if (antalPars == 2)
@@ -284,35 +303,35 @@ namespace det_rigtige_yatzy
 
                         if (treafdesamme && par)
                         {
-                            hus = Terning1 + Terning2 + Terning3 + Terning4 + Terning5;
+                            hus[currentPlayerTal] = Terning1 + Terning2 + Terning3 + Terning4 + Terning5;
                         }
                         else
                         {
-                            hus = 0; //skriv 0 hvis der ikke er hus
+                            hus[currentPlayerTal] = 0; //skriv 0 hvis der ikke er hus
                         }
                     }
 
                     //denlille DONE men man kan snyde
                     if (bogstav == "L")
                     {
-                        denlille = 15;
+                        denlille[currentPlayerTal] = 15;
                     }
 
                     //denstore DONE men man kan snyde
                     if (bogstav == "M")
                     {
-                        denstore = 20;
+                        denstore[currentPlayerTal] = 20;
                     }
                     //chancen 
                     if (bogstav == "N")
                     {
-                        chance = (sum1 * 1) + (sum2 * 2) + (sum3 * 3) + (sum4 * 4) + (sum5 * 5) + (sum6 * 6);
+                        chance[currentPlayerTal] = (sum1 * 1) + (sum2 * 2) + (sum3 * 3) + (sum4 * 4) + (sum5 * 5) + (sum6 * 6);
                     }
 
                     //Yatzy DONE men man kan snyde
                     if (bogstav == "O")
                     {
-                        yatzy = 50;
+                        yatzy[currentPlayerTal] = 50;
                     }
 
                     //clear og viser opdateret scoreboard
@@ -329,6 +348,13 @@ namespace det_rigtige_yatzy
                     Console.WriteLine($"{SpillerNavn[currentPlayerTal]}, det er din tur.");
                 }
             }
+
+            //
+            int totalPoints = ettere[currentPlayerTal] + toere[currentPlayerTal] + treer[currentPlayerTal] + firer[currentPlayerTal]
+                + femmere[currentPlayerTal] + seksere[currentPlayerTal] + etpar[currentPlayerTal] + topar[currentPlayerTal]
+                + treens[currentPlayerTal] + fireens[currentPlayerTal] + hus[currentPlayerTal] + denlille[currentPlayerTal] 
+                + denstore[currentPlayerTal] + chance[currentPlayerTal] + yatzy[currentPlayerTal];
+
             if (runde == 16)
             {
                 // Holder styr på den højeste score, start værdien er sat til 0 indtil der bliver fundet højere
@@ -466,23 +492,23 @@ namespace det_rigtige_yatzy
             static void scoreboard()
             {
                 //Scoreboardet
-                Console.WriteLine($"Y A H T Z Y    \t\t\t\t   Players: \t\t    1:, 2:, 3:, 4:");
+                Console.WriteLine($"Y A H T Z Y    \t\t\t\t   Player: \t\t    {SpillerNavn[currentPlayerTal]}'s tur");
                 Console.WriteLine($"Player 1:{spiller1} Player 2:{spiller2} Player 3:{spiller3} Player 4:{spiller4} \t\t Runde: {runde}");
-                Console.WriteLine($"\t\t\t\t\t\t\t A-1--------{ettere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t B-2--------{toere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t C-3--------{treer}");
-                Console.WriteLine($"\t\t\t\t\t\t\t D-4--------{firer}");
-                Console.WriteLine($"\t\t\t\t\t\t\t E-5--------{femmere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t F-6--------{seksere}");
-                Console.WriteLine($"\t\t\t\t\t\t\t G-etpar----{etpar}");
-                Console.WriteLine($"\t\t\t\t\t\t\t H-topar----{topar}");
-                Console.WriteLine($"\t\t\t\t\t\t\t I-treens---{treens}");
-                Console.WriteLine($"\t\t\t\t\t\t\t J-fireens--{fireens}");
-                Console.WriteLine($"\t\t\t\t\t\t\t K-Hus------{hus}");
-                Console.WriteLine($"\t\t\t\t\t\t\t L-denlille-{denlille}");
-                Console.WriteLine($"\t\t\t\t\t\t\t M-denstore-{denstore}");
-                Console.WriteLine($"\t\t\t\t\t\t\t N-chance---{chance}");
-                Console.WriteLine($"\t\t\t\t\t\t\t O-yatzy----{yatzy}");
+                Console.WriteLine($"\t\t\t\t\t\t\t A-1--------{ettere[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t B-2--------{toere[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t C-3--------{treer[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t D-4--------{firer[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t E-5--------{femmere[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t F-6--------{seksere[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t G-etpar----{etpar[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t H-topar----{topar[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t I-treens---{treens[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t J-fireens--{fireens[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t K-Hus------{hus[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t L-denlille-{denlille[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t M-denstore-{denstore[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t N-chance---{chance[currentPlayerTal]}");
+                Console.WriteLine($"\t\t\t\t\t\t\t O-yatzy----{yatzy[currentPlayerTal]}");
                 Console.WriteLine($"{SpillerNavn[currentPlayerTal]}, Det Er Din tur.");
                 Console.WriteLine($"Dit terningslag {Terning1}, {Terning2}, {Terning3}, {Terning4}, {Terning5}\t\t\t du har brugt {Kast} slag");
                          
