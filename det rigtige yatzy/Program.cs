@@ -13,23 +13,7 @@ namespace det_rigtige_yatzy
 
         static void Main(string[] args)
         {
-            //opretter en int for hver regel, for hver spiller (det vil sige deres indexnummer i spillernavn arrayen)
-            ettere = new int[SpillerNavn.Length];
-            toere = new int[SpillerNavn.Length];
-            treer = new int[SpillerNavn.Length];
-            firer = new int[SpillerNavn.Length];
-            femmere = new int[SpillerNavn.Length];
-            seksere = new int[SpillerNavn.Length];
-            etpar = new int[SpillerNavn.Length];
-            topar = new int[SpillerNavn.Length];
-            treens = new int[SpillerNavn.Length];
-            fireens = new int[SpillerNavn.Length];
-            hus = new int[SpillerNavn.Length];
-            denlille = new int[SpillerNavn.Length];
-            denstore = new int[SpillerNavn.Length];
-            chance = new int[SpillerNavn.Length];
-            yatzy = new int[SpillerNavn.Length];
-            totalPoints = new int[SpillerNavn.Length];
+           
 
             // Velkomstbesked
             Console.WriteLine("Velkommen til TEAM 13 Yahtzy");
@@ -102,8 +86,24 @@ namespace det_rigtige_yatzy
 
             }
 
+            //opretter en int for hver regel, for hver spiller (det vil sige deres indexnummer i spillernavn arrayen)
+            ettere = new int[SpillerNavn.Length];
+            toere = new int[SpillerNavn.Length];
+            treer = new int[SpillerNavn.Length];
+            firer = new int[SpillerNavn.Length];
+            femmere = new int[SpillerNavn.Length];
+            seksere = new int[SpillerNavn.Length];
+            etpar = new int[SpillerNavn.Length];
+            topar = new int[SpillerNavn.Length];
+            treens = new int[SpillerNavn.Length];
+            fireens = new int[SpillerNavn.Length];
+            hus = new int[SpillerNavn.Length];
+            denlille = new int[SpillerNavn.Length];
+            denstore = new int[SpillerNavn.Length];
+            chance = new int[SpillerNavn.Length];
+            yatzy = new int[SpillerNavn.Length];
+            totalPoints = new int[SpillerNavn.Length];
 
-            
 
             //viser scoreboard
             scoreboard();
@@ -130,7 +130,7 @@ namespace det_rigtige_yatzy
                     {
                         if (Kast == 0)
                         {
-                            Console.WriteLine("Skriv kast for at slå\n");
+                            Console.WriteLine("Skriv kast eller k for at slå\n");
                         }
                         else
                         {
@@ -140,7 +140,7 @@ namespace det_rigtige_yatzy
 
                         // Man kan også bruge ''if (Console.ReadKey().Key == ConsoleKey.K)'' Hvis man bare vil bruge en knap istedet for at skrive noget
                         string userInput = Console.ReadLine();
-                        if (userInput == "Kast" || userInput == "kast")
+                        if (userInput == "Kast" || userInput == "kast" || userInput == "k")
                         {
                             KastTerninger();
 
@@ -347,10 +347,10 @@ namespace det_rigtige_yatzy
                         // Tilføjer 50 bonuspoint
                         totalPoints[currentPlayerTal] += 50;
                     }
+
                     //clear og viser opdateret scoreboard
                     Console.Clear();
                     scoreboard();
-
 
                     //tilføjer 1 til currentplayer, hvis det når op på antallet af spiller sætter den til 0 og vi går ud af loopen og ind i en ny runde
                     currentPlayerTal++;
@@ -359,6 +359,11 @@ namespace det_rigtige_yatzy
                         currentPlayerTal = 0;
                         break;
                     }
+
+                    //clear og viser opdateret scoreboard
+                    Console.Clear();
+                    scoreboard();
+
                     Console.WriteLine($"{SpillerNavn[currentPlayerTal]}, det er din tur.");
 
                 }
@@ -541,3 +546,10 @@ namespace det_rigtige_yatzy
 // KÆMPE PROBLEM, lige pt er det kun player 1 der kan få point... = ✓ ✓ ✓
 //afslut, implementer bonuser = ✓
 //skrive noter til alting
+
+//første test af spillet:
+//-det var øv at man ikke kan låse terninger op igen
+//-hendes scoreboard blev ikke vist før hun kunne vælge reglen( det var en hurtig fix jeg har lavet nu ) = ✓
+//-de der hvor man kan snyde dem bliver man nød til at bruge, så vi alle sammen fik yatzy, lille og stor, fordi vi ikke kunne trykke andet
+//-samt når man fik hus så tilføjet den point ved topar, tror det er fordi den bruger samme variabel xD
+//-også var det lidt langtrunken at skulle skrive lås 1, lås 2, osv. 
