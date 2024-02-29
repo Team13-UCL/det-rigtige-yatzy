@@ -9,11 +9,27 @@ namespace det_rigtige_yatzy
         static bool IsTerning1Locked, IsTerning2Locked, IsTerning3Locked, IsTerning4Locked, IsTerning5Locked;
         static String spiller1, spiller2, spiller3, spiller4;
         static string[] SpillerNavn;
-        //static int totalPoints = ettere + toere + treer + firer + femmere + seksere + etpar + topar + treens + fireens + hus + denlille + denstore + chance + yatzy;
-        static int[] ettere, toere, treer, firer, femmere, seksere, etpar, topar, treens, fireens, hus, denlille, denstore, chance, yatzy; // laver en int array for hver regel
+        static int[] ettere, toere, treer, firer, femmere, seksere, etpar, topar, treens, fireens, hus, denlille, denstore, chance, yatzy, totalPoints; // laver en int array for hver regel
 
         static void Main(string[] args)
         {
+            //opretter en int for hver regel, for hver spiller (det vil sige deres indexnummer i spillernavn arrayen)
+            ettere = new int[SpillerNavn.Length];
+            toere = new int[SpillerNavn.Length];
+            treer = new int[SpillerNavn.Length];
+            firer = new int[SpillerNavn.Length];
+            femmere = new int[SpillerNavn.Length];
+            seksere = new int[SpillerNavn.Length];
+            etpar = new int[SpillerNavn.Length];
+            topar = new int[SpillerNavn.Length];
+            treens = new int[SpillerNavn.Length];
+            fireens = new int[SpillerNavn.Length];
+            hus = new int[SpillerNavn.Length];
+            denlille = new int[SpillerNavn.Length];
+            denstore = new int[SpillerNavn.Length];
+            chance = new int[SpillerNavn.Length];
+            yatzy = new int[SpillerNavn.Length];
+            totalPoints = new int[SpillerNavn.Length];
 
             // Velkomstbesked
             Console.WriteLine("Velkommen til TEAM 13 Yahtzy");
@@ -87,23 +103,7 @@ namespace det_rigtige_yatzy
             }
 
 
-            //opretter en int for hver regel, for hver spiller (det vil sige deres indexnummer i spillernavn arrayen)
-            ettere = new int[SpillerNavn.Length];
-            toere = new int[SpillerNavn.Length];
-            treer = new int[SpillerNavn.Length];
-            firer = new int[SpillerNavn.Length];
-            femmere = new int[SpillerNavn.Length];
-            seksere = new int[SpillerNavn.Length];
-            etpar = new int[SpillerNavn.Length];
-            topar = new int[SpillerNavn.Length];
-            treens = new int[SpillerNavn.Length];
-            fireens = new int[SpillerNavn.Length];
-            hus = new int[SpillerNavn.Length];
-            denlille = new int[SpillerNavn.Length];
-            denstore = new int[SpillerNavn.Length];
-            chance = new int[SpillerNavn.Length];
-            yatzy = new int[SpillerNavn.Length];
-
+            
 
             //viser scoreboard
             scoreboard();
@@ -334,11 +334,25 @@ namespace det_rigtige_yatzy
                         yatzy[currentPlayerTal] = 50;
                     }
 
+
+                    // samler alle pointene for hver spillers tur og ligger det ind i hver spillers totalpoints
+                    totalPoints[currentPlayerTal] = ettere[currentPlayerTal] + toere[currentPlayerTal] + treer[currentPlayerTal] + firer[currentPlayerTal]
+                + femmere[currentPlayerTal] + seksere[currentPlayerTal] + etpar[currentPlayerTal] + topar[currentPlayerTal]
+                + treens[currentPlayerTal] + fireens[currentPlayerTal] + hus[currentPlayerTal] + denlille[currentPlayerTal]
+                + denstore[currentPlayerTal] + chance[currentPlayerTal] + yatzy[currentPlayerTal];
+
+                    // Checker for bonuspoint
+                    if (ettere[currentPlayerTal] + toere[currentPlayerTal] + treer[currentPlayerTal] + firer[currentPlayerTal] + femmere[currentPlayerTal] + seksere[currentPlayerTal] >= 63)
+                    {
+                        // Tilføjer 50 bonuspoint
+                        totalPoints[currentPlayerTal] += 50;
+                    }
                     //clear og viser opdateret scoreboard
                     Console.Clear();
                     scoreboard();
 
 
+                    //tilføjer 1 til currentplayer, hvis det når op på antallet af spiller sætter den til 0 og vi går ud af loopen og ind i en ny runde
                     currentPlayerTal++;
                     if (currentPlayerTal >= SpillerNavn.Length)
                     {
@@ -346,15 +360,13 @@ namespace det_rigtige_yatzy
                         break;
                     }
                     Console.WriteLine($"{SpillerNavn[currentPlayerTal]}, det er din tur.");
+
                 }
             }
 
-            //
-            int totalPoints = ettere[currentPlayerTal] + toere[currentPlayerTal] + treer[currentPlayerTal] + firer[currentPlayerTal]
-                + femmere[currentPlayerTal] + seksere[currentPlayerTal] + etpar[currentPlayerTal] + topar[currentPlayerTal]
-                + treens[currentPlayerTal] + fireens[currentPlayerTal] + hus[currentPlayerTal] + denlille[currentPlayerTal] 
-                + denstore[currentPlayerTal] + chance[currentPlayerTal] + yatzy[currentPlayerTal];
+           
 
+            //tror måske den loop er ligegyldig, men kan give lidt overblik
             if (runde == 16)
             {
                 // Holder styr på den højeste score, start værdien er sat til 0 indtil der bliver fundet højere
@@ -365,8 +377,10 @@ namespace det_rigtige_yatzy
                 // Dette er en løkke som går igennem alle vores spillere og holder styr på dem
                 for (int i = 0; i < SpillerNavn.Length; i++)
                 {
+
+
                     //Tager vores totalpoints fra hver spiller og finder ud af hvem der har mest og så viser navnet
-                    int currentPlayerPoints = totalPoints[SpillerNavn[i]];
+                    int currentPlayerPoints = totalPoints[i];
                     if (currentPlayerPoints > maximumPoints)
                     {
                         maximumPoints = currentPlayerPoints;
@@ -376,30 +390,26 @@ namespace det_rigtige_yatzy
 
                 Console.WriteLine($"Tillykke til vinderen, {Vinderen}, med {maximumPoints} points!");
 
-                switch (SpillerNavn.Length)
+                switch (SpillerNavn.Length) //antal spillere
                 {
+                    //siger tillykke til navnet på den første spiller og første spillers point
                     case 2:
-                        Console.WriteLine($"Tillykke {SpillerNavn[0]} du har fået {totalPoints[SpillerNavn[0]]} points:");
+                        Console.WriteLine($"Tillykke {SpillerNavn[0]} du har fået {totalPoints[0]} points:");
+                        Console.WriteLine($"Tillykke {SpillerNavn[1]} du har fået {totalPoints[1]} points:");
                         Console.ReadLine();
-                        Console.WriteLine($"Tillykke {SpillerNavn[1]} du har fået {totalPoints[SpillerNavn[1]]} points:");
-                        Console.ReadLine();
+
                         break;
                     case 3:
-                        Console.WriteLine($"Tillykke {SpillerNavn[0]} du har fået {totalPoints[SpillerNavn[0]]} points:");
-                        Console.ReadLine();
-                        Console.WriteLine($"Tillykke {SpillerNavn[1]} du har fået {totalPoints[SpillerNavn[1]]} points:");
-                        Console.ReadLine();
-                        Console.WriteLine($"Tillykke {SpillerNavn[2]} du har fået {totalPoints[SpillerNavn[2]]} points:");
+                        Console.WriteLine($"Tillykke {SpillerNavn[0]} du har fået {totalPoints[0]} points:");
+                        Console.WriteLine($"Tillykke {SpillerNavn[1]} du har fået {totalPoints[1]} points:");
+                        Console.WriteLine($"Tillykke {SpillerNavn[2]} du har fået {totalPoints[2]} points:");
                         Console.ReadLine();
                         break;
                     case 4:
-                        Console.WriteLine($"Tillykke {SpillerNavn[0]} du har fået {totalPoints[SpillerNavn[0]]} points:");
-                        Console.ReadLine();
-                        Console.WriteLine($"Tillykke {SpillerNavn[1]} du har fået {totalPoints[SpillerNavn[1]]} points:");
-                        Console.ReadLine();
-                        Console.WriteLine($"Tillykke {SpillerNavn[2]} du har fået {totalPoints[SpillerNavn[2]]} points:");
-                        Console.ReadLine();
-                        Console.WriteLine($"Tillykke {SpillerNavn[3]} du har fået {totalPoints[SpillerNavn[3]]} points:");
+                        Console.WriteLine($"Tillykke {SpillerNavn[0]} du har fået {totalPoints[0]} points:");
+                        Console.WriteLine($"Tillykke {SpillerNavn[1]} du har fået {totalPoints[1]} points:");
+                        Console.WriteLine($"Tillykke {SpillerNavn[2]} du har fået {totalPoints[2]} points:");
+                        Console.WriteLine($"Tillykke {SpillerNavn[3]} du har fået {totalPoints[3]} points:");
                         Console.ReadLine();
                         break;
                 }
@@ -415,6 +425,8 @@ namespace det_rigtige_yatzy
 
 
             //////////////////////////ALLE METHODS////////////////////////
+           
+            //method til tælle summen af hver roll
             static int SumAfTerning(int eyes, int t1, int t2, int t3, int t4, int t5)
             {
                 int r = 0;
@@ -435,7 +447,7 @@ namespace det_rigtige_yatzy
             {
                 Random r = new Random();
 
-                //TO-DO tjek om terningen er låst inden den får en ny værdi
+                //tjek om terningen er låst inden den får en ny værdi
                 if (!IsTerning1Locked)
                 {
                     Terning1 = r.Next(1, 7);
@@ -526,6 +538,6 @@ namespace det_rigtige_yatzy
 //selve spillets gang = ✓
 //kigge på reglerne og opdater scoreboard= ✓
 //15 runder, med alle spillere = ✓
-// KÆMPE PROBLEM, lige pt er det kun player 1 der kan få point...
-//afslut, implementer bonuser
+// KÆMPE PROBLEM, lige pt er det kun player 1 der kan få point... = ✓ ✓ ✓
+//afslut, implementer bonuser = ✓
 //skrive noter til alting
