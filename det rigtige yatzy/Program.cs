@@ -156,6 +156,7 @@ namespace det_rigtige_yatzy
                             int terningNummer = int.Parse(Console.ReadLine());
                             LåsTerning(terningNummer);
                         }
+                        
                     }
 
 
@@ -285,7 +286,6 @@ namespace det_rigtige_yatzy
                         {
                             if (SumAfTerning(i, Terning1, Terning2, Terning3, Terning4, Terning5) >= 2)
                             {
-                                topar[currentPlayerTal] += 2 * i;
                                 antalPars++;
                             }
                             if (antalPars == 2)
@@ -311,14 +311,14 @@ namespace det_rigtige_yatzy
                         }
                     }
 
-                    //denlille DONE men man kan snyde
-                    if (bogstav == "L")
+                    //denlille 
+                    if (bogstav == "L" && sum1 == 1 && sum2 == 1 && sum3 == 1 && sum4 == 1 && sum5 == 1)
                     {
                         denlille[currentPlayerTal] = 15;
                     }
 
-                    //denstore DONE men man kan snyde
-                    if (bogstav == "M")
+                    //denstore 
+                    if (bogstav == "M" && sum2 == 1 && sum3 == 1 && sum4 == 1 && sum5 == 1 && sum6 == 1)
                     {
                         denstore[currentPlayerTal] = 20;
                     }
@@ -328,8 +328,8 @@ namespace det_rigtige_yatzy
                         chance[currentPlayerTal] = (sum1 * 1) + (sum2 * 2) + (sum3 * 3) + (sum4 * 4) + (sum5 * 5) + (sum6 * 6);
                     }
 
-                    //Yatzy DONE men man kan snyde
-                    if (bogstav == "O")
+                    //Yatzy 
+                    if (bogstav == "O" && sum1 == 5 || sum2 == 5 || sum3 == 5 || sum4 == 5 || sum5 == 5 || sum6 == 5)
                     {
                         yatzy[currentPlayerTal] = 50;
                     }
@@ -348,9 +348,7 @@ namespace det_rigtige_yatzy
                         totalPoints[currentPlayerTal] += 50;
                     }
 
-                    //clear og viser opdateret scoreboard
-                    Console.Clear();
-                    scoreboard();
+                    
 
                     //tilføjer 1 til currentplayer, hvis det når op på antallet af spiller sætter den til 0 og vi går ud af loopen og ind i en ny runde
                     currentPlayerTal++;
@@ -550,6 +548,6 @@ namespace det_rigtige_yatzy
 //første test af spillet:
 //-det var øv at man ikke kan låse terninger op igen
 //-hendes scoreboard blev ikke vist før hun kunne vælge reglen( det var en hurtig fix jeg har lavet nu ) = ✓
-//-de der hvor man kan snyde dem bliver man nød til at bruge, så vi alle sammen fik yatzy, lille og stor, fordi vi ikke kunne trykke andet
-//-samt når man fik hus så tilføjet den point ved topar, tror det er fordi den bruger samme variabel xD
+//-de der hvor man kan snyde dem bliver man nød til at bruge, så vi alle sammen fik yatzy, lille og stor, fordi vi ikke kunne trykke andet = ✓
+//-samt når man fik hus så tilføjet den point ved topar, tror det er fordi den bruger samme variabel xD = ✓
 //-også var det lidt langtrunken at skulle skrive lås 1, lås 2, osv. 
